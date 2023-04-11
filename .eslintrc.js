@@ -2,8 +2,14 @@ const path = require('path');
 
 module.exports = {
   parser: '@typescript-eslint/parser',
-  extends: ['airbnb', 'airbnb/hooks', 'plugin:@typescript-eslint/recommended'],
-  plugins: ['react', '@typescript-eslint'],
+  extends: [
+    'airbnb',
+    'airbnb/hooks',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
+    'plugin:prettier/recommended',
+  ],
+  plugins: ['react', '@typescript-eslint', 'prettier'],
   env: {
     browser: true,
     es2021: true,
@@ -20,5 +26,6 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': ['warn', { extensions: ['.jsx', '.tsx'] }],
+    'prettier/prettier': 'error',
   },
 };
