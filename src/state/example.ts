@@ -1,5 +1,3 @@
-// src/store/counterSlice.ts
-
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface CounterState {
@@ -10,6 +8,8 @@ const initialState: CounterState = {
   value: 0,
 };
 
+/* eslint-disable no-param-reassign */
+// redux allows state reassignment but eslint doesn't :D
 export const counterSlice = createSlice({
   name: 'counter',
   initialState,
@@ -24,6 +24,7 @@ export const counterSlice = createSlice({
       state.value += action.payload;
     },
   },
+
   extraReducers: (builder) => {
     // this is where asyncThunk function is resolved to fetch at initial and update the initialState
   },
