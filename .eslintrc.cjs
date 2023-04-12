@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
@@ -9,7 +7,7 @@ module.exports = {
     'prettier',
     'plugin:prettier/recommended',
   ],
-  plugins: ['react', '@typescript-eslint', 'prettier'],
+  plugins: ['react', '@typescript-eslint', 'prettier', 'import'],
   env: {
     browser: true,
     es2021: true,
@@ -21,11 +19,15 @@ module.exports = {
     },
     ecmaVersion: 12,
     sourceType: 'module',
-    project: path.resolve(__dirname, './tsconfig.json'),
+    project: './tsconfig.json',
+    extraFileExtensions: ['.json'],
   },
   rules: {
+    quotes: ['warn', 'single'],
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': ['warn', { extensions: ['.jsx', '.tsx'] }],
     'prettier/prettier': 'error',
+    'import/extensions': ['error', 'never'],
+    'import/no-unresolved': 0,
   },
 };
