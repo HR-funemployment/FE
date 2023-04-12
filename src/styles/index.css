@@ -67,3 +67,12 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* input[type="email"] {
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #000;
+  background: transparent;
+  outline: none;
+} */
