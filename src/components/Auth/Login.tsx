@@ -8,12 +8,25 @@ import {
   FormLabel,
   Button,
   useColorModeValue,
+  Text,
 } from '@chakra-ui/react';
 import { FaFacebook, FaGoogle } from 'react-icons/fa';
+import {
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  FacebookAuthProvider,
+} from 'firebase/auth';
+import auth from '../../../firebaseConfig';
 
-function Login() {
+interface LoginProps {
+  setUser: (user: User | null) => void;
+}
+
+function Login({ setUser }: LoginProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [otheremail, setOtheremail] = useState(null);
 
   const inputBgColor = useColorModeValue('white', 'gray.700');
   const inputBorderColor = useColorModeValue('brand.500', 'brand.500');
@@ -25,12 +38,37 @@ function Login() {
 
   const handleGoogleSignIn = () => {
     // TODO: Implement Google sign-in functionality
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((data) => {
+        console.log('it went here');
+        setUser(data);
+      })
+      .catch((err) => console.log(err));
     console.log('Google sign-in clicked!');
   };
 
   const handleFacebookSignIn = () => {
     // TODO: Implement Facebook sign-in functionality
+    const provider = new FacebookAuthProvider();
+    const providerG = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((data) => {
+        setUser(data);
+      })
+      .catch((err) => {
+        setOtheremail(true);
+      });
     console.log('Facebook sign-in clicked!');
+  };
+
+  const handleLogIn = () => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((data) => {
+        console.log('success');
+        setUser(data);
+      })
+      .catch(() => console.log('fail'));
   };
 
   return (
@@ -96,7 +134,7 @@ function Login() {
             }}
           />
         </FormControl>
-        <Button colorScheme='teal' mt={4} width='100%'>
+        <Button colorScheme='teal' mt={4} width='100%' onClick={handleLogIn}>
           Log In
         </Button>
         <Button
@@ -117,6 +155,7 @@ function Login() {
         >
           Sign in with Facebook
         </Button>
+        {otheremail && <Text>Account exists {otheremail} with other credential</Text>}
       </VStack>
     </Box>
   );
