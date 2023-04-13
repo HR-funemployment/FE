@@ -5,6 +5,10 @@ import Login from './Login';
 import Forget from './Forget';
 import SignUp from './SignUp';
 
+interface AuthProps {
+  setUser: (user: User | null) => void;
+}
+
 function Navbar() {
   return (
     <nav>
@@ -49,13 +53,13 @@ function Navbar() {
   );
 }
 
-function Auth() {
+function Auth({ setUser }: AuthProps) {
   return (
     <Router>
       <Navbar />
       <Routes>
         <Route path='*' element={<Navigate to='/Login' />} />
-        <Route path='/Login' element={<Login />} />
+        <Route path='/Login' element={<Login setUser={setUser}/>} />
         <Route path='/SignUp' element={<SignUp />} />
         <Route path='/Forget' element={<Forget />} />
       </Routes>
