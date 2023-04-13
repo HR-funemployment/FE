@@ -11,15 +11,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
       <ChakraProvider theme={theme}>
-        <Box
-          h='100%'
-          w='100%'
-          backgroundColor={theme.colors.background[100]}
-          display='flex'
-          flexDirection='column'
-        >
-          <App />
-        </Box>
+        <App />
       </ChakraProvider>
     </Provider>
   </React.StrictMode>

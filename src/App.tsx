@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './styles/App.css';
 import { signOut, onAuthStateChanged } from 'firebase/auth';
 import { setUserId } from 'firebase/analytics';
 import { Button } from '@chakra-ui/react';
+import { AppRouter } from './routes/routes';
+import Layout from './components/Layout';
 import Auth from './components/Auth';
 import auth from '../firebaseConfig';
 
@@ -36,21 +38,23 @@ function PlaceHolder({ setUser }: AppProps) {
 function App() {
   const [user, setUser] = useState<User | null>(null);
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (userOb) => {
-      if (userOb) {
-        // User is signed in
-        setUser(userOb);
-      } else {
-        // User is signed out
-        setUser(null);
-      }
-    })
-  }, []);
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (userOb) => {
+  //     if (userOb) {
+  //       // User is signed in
+  //       setUser(userOb);
+  //     } else {
+  //       // User is signed out
+  //       setUser(null);
+  //     }
+  //   })
+  // }, []);
 
   return (
-    <div className='App'>
-      {user ? <PlaceHolder setUser={setUser} /> : <Auth setUser={setUser} />}
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <Layout />
+      <AppRouter />
+      {/* <div className='App'>{user ? <PlaceHolder /> : <Auth setUser={setUser} />}</div> */}
     </div>
   );
 }
