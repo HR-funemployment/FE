@@ -10,7 +10,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { logout } from '../../state/user';
-import { getPath } from '../../routes/routes';
+import { getPath } from '../../routes/Routes';
 
 export default function Navbar() {
   const { user } = useSelector((state) => state.user);
@@ -18,7 +18,7 @@ export default function Navbar() {
   return (
     <div style={{ height: '4rem', backgroundColor: 'gray' }}>
       <div>Navbar Placeholder</div>
-      <ChakraLink href={getPath('hosting')}>Routing Example Button1</ChakraLink>
+      <ChakraLink href={getPath('host-admin')}>Routing Example Button1</ChakraLink>
       <br />
       <br />
       <div style={{ position: 'relative' }}>

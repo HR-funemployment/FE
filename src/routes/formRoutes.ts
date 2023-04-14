@@ -19,7 +19,7 @@ import {
   S5Review,
   S6Publish,
 } from '../pages/FormJourney';
-import { RouteType } from './routes';
+import { RouteType } from './Routes';
 
 const formRoutes: RouteType[] = [
   // Admin pages

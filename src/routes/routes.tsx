@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../state/store';
@@ -43,16 +44,19 @@ const getPath = (title: string) => {
 
 function AppRouter() {
   const { user } = useSelector((state: RootState) => state.user);
+
   return (
     <Router>
       <Routes>
-        {routes.map((route) => (
-          <Route key={route.path} path={route.path} element={<route.component />} />
-        ))}
-        {!user &&
-          routes.map((route) => (
-            <Route key={route.path} path={route.path} element={<route.component />} />
-          ))}
+        {!user
+          ? routes.map((route) => (
+              <Route key={route.path} path={route.path} element={<route.component />} />
+            ))
+          : routes
+              .filter((i) => i.type !== 'auth')
+              .map((route) => (
+                <Route key={route.path} path={route.path} element={<route.component />} />
+              ))}
       </Routes>
     </Router>
   );

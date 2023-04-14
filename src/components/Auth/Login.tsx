@@ -20,7 +20,7 @@ import {
   signInWithPopup,
   FacebookAuthProvider,
 } from 'firebase/auth';
-import { getPath } from '../../routes/routes';
+import { getPath } from '../../routes/Routes';
 import auth from '../../../firebaseConfig';
 import { login } from '../../state/user';
 
