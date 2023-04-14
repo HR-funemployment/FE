@@ -13,7 +13,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import auth from '../../../firebaseConfig';
-import { authPath } from '../../routes/routes';
+import { getPath } from '../../routes/Routes';
 
 function Forget() {
   const [email, setEmail] = useState('');
@@ -80,7 +80,7 @@ function Forget() {
           Reset Password
         </Button>
         <Text mt={4}>{message}</Text>
-        <ChakraLink href={authPath('login')}> Back </ChakraLink>
+        <ChakraLink href={getPath('login')}> Back </ChakraLink>
       </VStack>
     </Box>
   );

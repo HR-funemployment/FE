@@ -1,52 +1,51 @@
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { HostingInfo, BecomeAHost } from '../pages/Hosting';
+import { RootState } from '../state/store';
+import DecideLayout from './DecideLayout';
+import formRoutes from './formRoutes';
 import { Login, Forget, SignUp } from '../components/Auth';
+import Dashboard from '../pages/Dashboard';
 
-interface AppRoute {
+export interface RouteType {
   path: string;
+  type: string;
   title: string;
   component: React.ComponentType;
 }
 
-interface AuthRoute {
-  path: string;
-  title: string;
-  component: React.ComponentType;
-}
-
-// Add routes here
-const routes: AppRoute[] = [
-  // Airbnb your home
+// Import components and add it to routes
+const routes: RouteType[] = [
+  // Dashboard
+  // This is the home page placeholder
   {
-    path: '/host/homes',
-    title: 'hosting',
-    component: HostingInfo,
+    path: '/',
+    type: 'listing',
+    title: 'dashboard',
+    component: Dashboard,
   },
-  {
-    path: '/become-a-host',
-    title: 'step1',
-    component: BecomeAHost,
-  },
-];
 
-const authRoutes: AuthRoute[] = [
+  // Authentication
   {
     path: '/signup',
+    type: 'auth',
     title: 'signup',
     component: SignUp,
   },
   {
     path: '/forget',
+    type: 'auth',
     title: 'forget',
     component: Forget,
   },
   {
     path: '/login',
+    type: 'auth',
     title: 'login',
     component: Login,
   },
+
+  ...formRoutes,
 ];
 
 const getPath = (title: string) => {
@@ -54,26 +53,32 @@ const getPath = (title: string) => {
   return route ? route.path : '/';
 };
 
-const authPath = (title: string) => {
-  const authRoute = authRoutes.find((component) => component.title === title);
-  return authRoute ? authRoute.path : '/';
-};
-
 function AppRouter() {
-  const { user } = useSelector((state) => state.user);
+  const { user } = useSelector((state: RootState) => state.user);
+
   return (
     <Router>
       <Routes>
-        {routes.map((route) => (
-          <Route key={route.path} path={route.path} element={<route.component />} />
-        ))}
         {!user &&
-          authRoutes.map((authRoute) => (
-            <Route key={authRoute.path} path={authRoute.path} element={<authRoute.component />} />
+          routes.map((route) => (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={<DecideLayout component={route.component} routeType={route.type} />}
+            />
+          ))}
+        {routes
+          .filter((i) => i.type !== 'auth')
+          .map((route) => (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={<DecideLayout component={route.component} routeType={route.type} />}
+            />
           ))}
       </Routes>
     </Router>
   );
 }
 
-export { routes, getPath, authPath, AppRouter };
+export { routes, getPath, AppRouter };

@@ -29,5 +29,6 @@ module.exports = {
     'prettier/prettier': 'error',
     'import/extensions': ['error', 'never'],
     'import/no-unresolved': 0,
+    'react/jsx-props-no-spreading': 'off',
   },
 };
