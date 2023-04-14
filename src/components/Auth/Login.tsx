@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
+  Link as ChakraLink,
   Box,
   Heading,
   VStack,
@@ -9,21 +11,26 @@ import {
   Button,
   useColorModeValue,
   Text,
+  Divider,
 } from '@chakra-ui/react';
-import { FaFacebook, FaGoogle } from 'react-icons/fa';
+import { FaFacebook, FaGoogle, FaEnvelope } from 'react-icons/fa';
 import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
   FacebookAuthProvider,
 } from 'firebase/auth';
+import { authPath } from '../../routes/routes';
 import auth from '../../../firebaseConfig';
+import { login } from '../../state/user';
 
-interface LoginProps {
-  setUser: (user: User | null) => void;
-}
+// interface LoginProps {
+//   setUser: (user: User | null) => void;
+// }
 
-function Login({ setUser }: LoginProps) {
+function Login() {
+  const { user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [otheremail, setOtheremail] = useState(null);
@@ -41,8 +48,7 @@ function Login({ setUser }: LoginProps) {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((data) => {
-        console.log('it went here');
-        setUser(data);
+        console.log('success');
       })
       .catch((err) => console.log(err));
     console.log('Google sign-in clicked!');
@@ -51,10 +57,9 @@ function Login({ setUser }: LoginProps) {
   const handleFacebookSignIn = () => {
     // TODO: Implement Facebook sign-in functionality
     const provider = new FacebookAuthProvider();
-    const providerG = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((data) => {
-        setUser(data);
+        console.log('success');
       })
       .catch((err) => {
         setOtheremail(true);
@@ -66,9 +71,8 @@ function Login({ setUser }: LoginProps) {
     signInWithEmailAndPassword(auth, email, password)
       .then((data) => {
         console.log('success');
-        setUser(data);
       })
-      .catch(() => console.log('fail'));
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -156,6 +160,18 @@ function Login({ setUser }: LoginProps) {
           Sign in with Facebook
         </Button>
         {otheremail && <Text>Account exists {otheremail} with other credential</Text>}
+        <Divider my={6} borderColor='gray.300' borderWidth={2} />
+        <Button
+          leftIcon={<FaEnvelope />}
+          mt={4}
+          width='100%'
+          as={ChakraLink}
+          href={authPath('signup')}
+          variant='outline'
+        >
+          Sign up with email
+        </Button>
+        <ChakraLink href={authPath('forget')}> Forget Password </ChakraLink>
       </VStack>
     </Box>
   );
