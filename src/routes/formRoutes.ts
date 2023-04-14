@@ -26,7 +26,7 @@ const formRoutes: RouteType[] = [
   {
     path: '/hosting',
     type: 'hosting',
-    title: 'host-admin',
+    title: 'host_admin',
     component: HostingInfo,
   },
 
@@ -35,7 +35,7 @@ const formRoutes: RouteType[] = [
   {
     path: '/become-a-host',
     type: 'hosting',
-    title: 'become-host',
+    title: 'become_host',
     component: ManageListings,
   },
 
@@ -44,7 +44,7 @@ const formRoutes: RouteType[] = [
   {
     path: '/become-a-host/overview',
     type: 'hosting',
-    title: 'host-overview',
+    title: 'host_overview',
     component: HostOverview,
   },
 
@@ -52,31 +52,31 @@ const formRoutes: RouteType[] = [
   {
     path: '/become-a-host/:draftId/about-your-place',
     type: 'hosting',
-    title: 'step1-about',
+    title: 'step1_about',
     component: S1BecomeAHost,
   },
   {
     path: '/become-a-host/:draftId/structure',
     type: 'hosting',
-    title: 'step1-structure',
+    title: 'step1_structure',
     component: S2Structure,
   },
   {
     path: '/become-a-host/:draftId/privacy-type',
     type: 'hosting',
-    title: 'step1-privacy',
+    title: 'step1_privacy',
     component: S3Privacy,
   },
   {
     path: '/become-a-host/:draftId/location',
     type: 'hosting',
-    title: 'step1-location',
+    title: 'step1_location',
     component: S4Location,
   },
   {
     path: '/become-a-host/:draftId/floor-plan',
     type: 'hosting',
-    title: 'step1-floorplan',
+    title: 'step1_floorplan',
     component: S5FloorPlan,
   },
 
@@ -85,31 +85,31 @@ const formRoutes: RouteType[] = [
   {
     path: '/become-a-host/:draftId/stand-out',
     type: 'hosting',
-    title: 'step2-standout',
+    title: 'step2_standout',
     component: S1StandOut,
   },
   {
     path: '/become-a-host/:draftId/amenities',
     type: 'hosting',
-    title: 'step2-amenities',
+    title: 'step2_amenities',
     component: S2Amenities,
   },
   {
     path: '/become-a-host/:draftId/photos',
     type: 'hosting',
-    title: 'step2-privacy',
+    title: 'step2_photos',
     component: S3Photos,
   },
   {
     path: '/become-a-host/:draftId/title',
     type: 'hosting',
-    title: 'step2-title',
+    title: 'step2_title',
     component: S4Title,
   },
   {
     path: '/become-a-host/:draftId/description',
     type: 'hosting',
-    title: 'step2-description',
+    title: 'step2_description',
     component: S5Description,
   },
   // Step 3
@@ -117,31 +117,31 @@ const formRoutes: RouteType[] = [
   {
     path: '/become-a-host/:draftId/finish-setup',
     type: 'hosting',
-    title: 'step3-finish',
+    title: 'step3_finish',
     component: S1FinishSetup,
   },
   {
     path: '/become-a-host/:draftId/visibility',
     type: 'hosting',
-    title: 'step3-visibility',
+    title: 'step3_visibility',
     component: S2Visibility,
   },
   {
     path: '/become-a-host/:draftId/price',
     type: 'hosting',
-    title: 'step3-price',
+    title: 'step3_price',
     component: S3Price,
   },
   {
     path: '/become-a-host/:draftId/legal',
     type: 'hosting',
-    title: 'step3-legal',
+    title: 'step3_legal',
     component: S4Legal,
   },
   {
     path: '/become-a-host/:draftId/receipt',
     type: 'hosting',
-    title: 'step3-review',
+    title: 'step3_review',
     component: S5Review,
   },
 
@@ -149,7 +149,7 @@ const formRoutes: RouteType[] = [
   {
     path: '/become-a-host/:draftId/publish-celebration',
     type: 'hosting',
-    title: 'step3-publish',
+    title: 'step3_publish',
     component: S6Publish,
   },
 ];

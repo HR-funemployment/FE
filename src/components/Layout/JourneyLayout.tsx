@@ -5,11 +5,11 @@ interface Props {
 export default function JourneyLayout({ children }: Props) {
   return (
     <div>
-      TESTING
+      This is navbar for the form journey
       <br />
       {children}
       <br />
-      TESTING
+      This is the footer for the form journey
     </div>
   );
 }

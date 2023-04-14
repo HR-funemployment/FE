@@ -18,7 +18,7 @@ export default function Navbar() {
   return (
     <div style={{ height: '4rem', backgroundColor: 'gray' }}>
       <div>Navbar Placeholder</div>
-      <ChakraLink href={getPath('host-admin')}>Routing Example Button1</ChakraLink>
+      <ChakraLink href={getPath('host_admin')}>Routing Example Button1</ChakraLink>
       <br />
       <br />
       <div style={{ position: 'relative' }}>
