@@ -1,17 +1,17 @@
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { HostingInfo, BecomeAHost } from '../pages/Hosting';
+import { RootState } from '../state/store';
+import formRoutes from './formRoutes';
 import { Login, Forget, SignUp } from '../components/Auth';
 
-interface RouteType {
+export interface RouteType {
   path: string;
   type: string;
   title: string;
   component: React.ComponentType;
 }
 
-// Add other routes here
+// Import components and add it to routes
 const routes: RouteType[] = [
   // Authentication
   {
@@ -33,19 +33,7 @@ const routes: RouteType[] = [
     component: Login,
   },
 
-  // Airbnb your home
-  {
-    path: '/host/homes',
-    type: 'create-listing',
-    title: 'hosting',
-    component: HostingInfo,
-  },
-  {
-    path: '/become-a-host',
-    type: 'create-listing',
-    title: 'step1',
-    component: BecomeAHost,
-  },
+  ...formRoutes,
 ];
 
 const getPath = (title: string) => {
@@ -54,7 +42,7 @@ const getPath = (title: string) => {
 };
 
 function AppRouter() {
-  const { user } = useSelector((state) => state.user);
+  const { user } = useSelector((state: RootState) => state.user);
   return (
     <Router>
       <Routes>

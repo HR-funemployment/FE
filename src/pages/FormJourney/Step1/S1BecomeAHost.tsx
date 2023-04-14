@@ -1,3 +1,3 @@
 export default function BecomeAHost() {
-  return <div>First page</div>;
+  return <div>Step 1</div>;
 }
