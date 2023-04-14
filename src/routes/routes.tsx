@@ -2,8 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../state/store';
+import DecideLayout from './DecideLayout';
 import formRoutes from './formRoutes';
 import { Login, Forget, SignUp } from '../components/Auth';
+import Dashboard from '../pages/Dashboard';
 
 export interface RouteType {
   path: string;
@@ -14,6 +16,15 @@ export interface RouteType {
 
 // Import components and add it to routes
 const routes: RouteType[] = [
+  // Dashboard
+  // This is the home page placeholder
+  {
+    path: '/',
+    type: 'listing',
+    title: 'dashboard',
+    component: Dashboard,
+  },
+
   // Authentication
   {
     path: '/signup',
@@ -48,15 +59,23 @@ function AppRouter() {
   return (
     <Router>
       <Routes>
-        {!user
-          ? routes.map((route) => (
-              <Route key={route.path} path={route.path} element={<route.component />} />
-            ))
-          : routes
-              .filter((i) => i.type !== 'auth')
-              .map((route) => (
-                <Route key={route.path} path={route.path} element={<route.component />} />
-              ))}
+        {!user &&
+          routes.map((route) => (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={<DecideLayout component={route.component} routeType={route.type} />}
+            />
+          ))}
+        {routes
+          .filter((i) => i.type !== 'auth')
+          .map((route) => (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={<DecideLayout component={route.component} routeType={route.type} />}
+            />
+          ))}
       </Routes>
     </Router>
   );

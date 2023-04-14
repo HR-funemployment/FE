@@ -3,5 +3,13 @@ interface Props {
 }
 
 export default function JourneyLayout({ children }: Props) {
-  return <div>{children}</div>;
+  return (
+    <div>
+      TESTING
+      <br />
+      {children}
+      <br />
+      TESTING
+    </div>
+  );
 }
