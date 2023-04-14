@@ -13,7 +13,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import auth from '../../../firebaseConfig';
-import { getPath } from '../../routes/Routes';
+import { getPath } from '../../routes/AppRouter';
 
 function Forget() {
   const [email, setEmail] = useState('');

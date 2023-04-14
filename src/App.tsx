@@ -1,7 +1,7 @@
 import './styles/App.css';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
-import { AppRouter } from './routes/Routes';
+import { AppRouter } from './routes/AppRouter';
 import auth from '../firebaseConfig';
 import { login } from './state/user';
 

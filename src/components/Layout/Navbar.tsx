@@ -10,7 +10,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { logout } from '../../state/user';
-import { getPath } from '../../routes/Routes';
+import { getPath } from '../../routes/AppRouter';
 
 export default function Navbar() {
   const { user } = useSelector((state) => state.user);
