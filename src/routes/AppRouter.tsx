@@ -5,7 +5,7 @@ import { RootState } from '../state/store';
 import DecideLayout from './DecideLayout';
 import formRoutes from './formRoutes';
 import { Login, Forget, SignUp } from '../components/Auth';
-import Dashboard from '../pages/HomePage';
+import HomePage from '../pages/HomePage';
 
 export interface RouteType {
   path: string;
@@ -21,8 +21,8 @@ const routes: RouteType[] = [
   {
     path: '/',
     type: 'listing',
-    title: 'dashboard',
-    component: Dashboard,
+    title: 'home',
+    component: HomePage,
   },
 
   // Authentication
