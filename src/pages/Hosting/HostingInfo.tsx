@@ -1,3 +1,3 @@
 export default function HostingInfo() {
-  return <div>Placeholder</div>;
+  return <div>Does this work Hosting Info</div>;
 }
