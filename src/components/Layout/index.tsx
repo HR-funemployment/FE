@@ -7,10 +7,10 @@ import {
   MenuList,
   Avatar,
 } from '@chakra-ui/react';
+import { useSelector, useDispatch } from 'react-redux';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { logout } from '../../state/user';
-import { useSelector, useDispatch } from 'react-redux';
-import { getPath, authPath } from '../../routes/routes';
+import { getPath } from '../../routes/routes';
 
 export default function Navbar() {
   const { user } = useSelector((state) => state.user);
@@ -20,7 +20,6 @@ export default function Navbar() {
       <div>Navbar Placeholder</div>
       <ChakraLink href={getPath('hosting')}>Routing Example Button1</ChakraLink>
       <br />
-      <ChakraLink href={getPath('step1')}>Routing Example Button2</ChakraLink>
       <br />
       <div style={{ position: 'relative' }}>
         <Menu>
@@ -48,10 +47,10 @@ export default function Navbar() {
               </MenuItem>
             ) : (
               <>
-                <MenuItem as={ChakraLink} href={authPath('login')}>
+                <MenuItem as={ChakraLink} href={getPath('login')}>
                   Log In
                 </MenuItem>
-                <MenuItem as={ChakraLink} href={authPath('signup')}>
+                <MenuItem as={ChakraLink} href={getPath('signup')}>
                   Sign Up
                 </MenuItem>
               </>

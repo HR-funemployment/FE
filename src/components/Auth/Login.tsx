@@ -20,7 +20,7 @@ import {
   signInWithPopup,
   FacebookAuthProvider,
 } from 'firebase/auth';
-import { authPath } from '../../routes/routes';
+import { getPath } from '../../routes/routes';
 import auth from '../../../firebaseConfig';
 import { login } from '../../state/user';
 
@@ -166,12 +166,12 @@ function Login() {
           mt={4}
           width='100%'
           as={ChakraLink}
-          href={authPath('signup')}
+          href={getPath('signup')}
           variant='outline'
         >
           Sign up with email
         </Button>
-        <ChakraLink href={authPath('forget')}> Forget Password </ChakraLink>
+        <ChakraLink href={getPath('forget')}> Forget Password </ChakraLink>
       </VStack>
     </Box>
   );
