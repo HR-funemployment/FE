@@ -5,7 +5,7 @@ import { RootState } from '../state/store';
 import DecideLayout from './DecideLayout';
 import formRoutes from './formRoutes';
 import { Login, Forget, SignUp } from '../components/Auth';
-import Dashboard from '../pages/Dashboard';
+import Dashboard from '../pages/HomePage';
 
 export interface RouteType {
   path: string;
