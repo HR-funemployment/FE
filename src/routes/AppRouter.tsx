@@ -59,23 +59,23 @@ function AppRouter() {
   return (
     <Router>
       <Routes>
-        {!user &&
-          routes.map((route) => (
-            <Route
-              key={route.path}
-              path={route.path}
-              element={<DecideLayout component={route.component} routeType={route.type} />}
-            />
-          ))}
-        {routes
-          .filter((i) => i.type !== 'auth')
-          .map((route) => (
-            <Route
-              key={route.path}
-              path={route.path}
-              element={<DecideLayout component={route.component} routeType={route.type} />}
-            />
-          ))}
+        {!user
+          ? routes.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={<DecideLayout component={route.component} routeType={route.type} />}
+              />
+            ))
+          : routes
+              .filter((i) => i.type !== 'auth')
+              .map((route) => (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  element={<DecideLayout component={route.component} routeType={route.type} />}
+                />
+              ))}
       </Routes>
     </Router>
   );
