@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
   Link as ChakraLink,
   Box,
@@ -29,6 +30,7 @@ import { login } from '../../state/user';
 // }
 
 function Login() {
+  const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
@@ -43,12 +45,17 @@ function Login() {
     '0 0 0 2px rgba(29, 185, 84, 0.6)'
   );
 
+  const redirectLogin = () => {
+    navigate(getPath('listing'));
+  }
+
   const handleGoogleSignIn = () => {
     // TODO: Implement Google sign-in functionality
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((data) => {
         console.log('success');
+        redirectLogin();
       })
       .catch((err) => console.log(err));
     console.log('Google sign-in clicked!');
@@ -60,6 +67,7 @@ function Login() {
     signInWithPopup(auth, provider)
       .then((data) => {
         console.log('success');
+        redirectLogin();
       })
       .catch((err) => {
         setOtheremail(true);
@@ -71,6 +79,7 @@ function Login() {
     signInWithEmailAndPassword(auth, email, password)
       .then((data) => {
         console.log('success');
+        redirectLogin();
       })
       .catch((err) => console.log(err));
   };
