@@ -6,7 +6,7 @@ interface ConditionalLayoutProps {
 }
 
 export default function DecideLayout({ component: Component, routeType }: ConditionalLayoutProps) {
-  if (routeType === 'hosting') {
+  if (routeType === 'create-listing') {
     return (
       <JourneyLayout>
         <Component />

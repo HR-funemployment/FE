@@ -1,6 +1,5 @@
-export { default as HostingInfo } from './HostingInfo';
+export { default as ManageDrafts } from './ManageDrafts';
 export { default as HostOverview } from './HostOverview';
-export { default as ManageListings } from './ManageListings';
 
 // Step 1
 export { default as S1BecomeAHost } from './Step1/S1BecomeAHost';
