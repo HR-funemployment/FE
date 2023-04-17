@@ -3,6 +3,7 @@ import testArray from './testData';
 import ListItem from './ListItem';
 
 export default function ListView() {
+  console.log('testArray: ', testArray);
   return (
     <>
       <div>This is List View</div>
@@ -10,13 +11,13 @@ export default function ListView() {
       <div>Filter</div>
       <div>
         {testArray.map((item) => (
-          <ul key={testArray[item].id}>
+          <ul key={item.id}>
             <ListItem
-              name={testArray[item].name}
-              neighborhood={testArray[item].neighborhood}
-              price={testArray[item].price}
-              photo={testArray[item].picture_url}
-              rating={testArray[item].review_scores_rating}
+              name={item.name}
+              neighborhood={item.neighborhood}
+              price={item.price}
+              photo={item.picture_url}
+              rating={item.review_scores_rating}
             />
           </ul>
         ))}

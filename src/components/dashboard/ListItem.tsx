@@ -4,19 +4,19 @@ import ListPhoto from './ListPhoto';
 interface ListProps {
   name: string;
   neighborhood: string;
+  price: string;
   photo: string;
   rating: number;
 }
 
-export default function ListItem(props: ListProps) {
+export default function ListItem({ name, neighborhood, price, photo, rating }: ListProps) {
   return (
     <>
-      <div>This is a List Item</div>
-      <ListPhoto photo={props.photo} />
-      <div>{props.name}</div>
-      <div>{props.neighborhood}</div>
-      <div>{props.price}</div>
-      <div>{props.rating}</div>
+      <ListPhoto photo={photo} />
+      <div>{name}</div>
+      <div>{neighborhood}</div>
+      <div>{price}</div>
+      <div>{rating}</div>
     </>
   );
 }

@@ -1,4 +1,8 @@
-export default function ListPhoto({ photo }) {
+interface Photo {
+  photo: string;
+}
+
+export default function ListPhoto({ photo }: Photo) {
   return (
     <img
       src={photo}

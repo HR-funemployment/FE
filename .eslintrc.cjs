@@ -24,6 +24,7 @@ module.exports = {
   },
   rules: {
     quotes: ['warn', 'single', { allowTemplateLiterals: true }],
+    jsx-quotes: ["error", "prefer-double"],
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': ['warn', { extensions: ['.jsx', '.tsx'] }],
     'prettier/prettier': 'error',
