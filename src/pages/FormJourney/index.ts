@@ -1,4 +1,3 @@
-export { default as HostingInfo } from './HostingInfo';
 export { default as HostOverview } from './HostOverview';
 export { default as ManageListings } from './ManageListings';
 
