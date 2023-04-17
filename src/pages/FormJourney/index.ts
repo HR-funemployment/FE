@@ -1,4 +1,3 @@
-export { default as FormJourney } from './FormJourney';
 export { default as ManageDrafts } from './ManageDrafts';
 export { default as HostOverview } from './HostOverview';
 

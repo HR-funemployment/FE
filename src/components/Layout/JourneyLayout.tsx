@@ -12,10 +12,12 @@ export default function JourneyLayout({ children }: Props) {
 
   const handleNextStep = () => {
     send('NEXT');
+    const nextState = JourneyMachine.transition(state, 'NEXT');
   };
 
   const handlePrevStep = () => {
     send('PREV');
+    const prevState = JourneyMachine.transition(state, 'NEXT');
   };
 
   return (
