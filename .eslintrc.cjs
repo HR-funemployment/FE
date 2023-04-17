@@ -23,7 +23,7 @@ module.exports = {
     extraFileExtensions: ['.json'],
   },
   rules: {
-    quotes: ['warn', 'single'],
+    quotes: ['warn', 'single', { allowTemplateLiterals: true }],
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': ['warn', { extensions: ['.jsx', '.tsx'] }],
     'prettier/prettier': 'error',
