@@ -1,6 +1,8 @@
 import React from 'react';
 import { useMachine } from '@xstate/react';
+import { useNavigate } from 'react-router-dom';
 import { Flex, Button } from '@chakra-ui/react';
+import { getPath } from '../../routes/AppRouter';
 import JourneyMachine from '../../pages/FormJourney/JourneyMachine';
 
 interface Props {
@@ -8,16 +10,19 @@ interface Props {
 }
 
 export default function JourneyLayout({ children }: Props) {
+  const navigate = useNavigate();
   const [state, send] = useMachine(JourneyMachine);
 
   const handleNextStep = () => {
     send('NEXT');
     const nextState = JourneyMachine.transition(state, 'NEXT');
+    navigate(getPath(nextState.value.toString()));
   };
 
   const handlePrevStep = () => {
     send('PREV');
-    const prevState = JourneyMachine.transition(state, 'NEXT');
+    const prevState = JourneyMachine.transition(state, 'PREV');
+    navigate(getPath(prevState.value.toString()));
   };
 
   return (
@@ -29,9 +34,11 @@ export default function JourneyLayout({ children }: Props) {
       })}
       <br />
       <Flex direction='row'>
-        <Button mr='2' onClick={handlePrevStep}>
-          Prev
-        </Button>
+        {!['host_overview', 'step3_publish'].includes(String(state.value)) && (
+          <Button mr='2' onClick={handlePrevStep}>
+            Prev
+          </Button>
+        )}
         <Button onClick={handleNextStep}>Next</Button>
       </Flex>
     </div>
