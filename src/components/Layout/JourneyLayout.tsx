@@ -1,3 +1,4 @@
+import { Flex, Button } from '@chakra-ui/react';
 interface Props {
   children: React.ReactNode;
 }
@@ -9,7 +10,10 @@ export default function JourneyLayout({ children }: Props) {
       <br />
       {children}
       <br />
-      This is the footer for the form journey
+      <Flex direction='row'>
+        <Button mr='2'>Prev</Button>
+        <Button>Next</Button>
+      </Flex>
     </div>
   );
 }

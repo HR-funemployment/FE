@@ -1,6 +1,6 @@
 import {
+  FormJourney,
   HostOverview,
-  ManageListings,
   S1BecomeAHost,
   S2Structure,
   S3Privacy,
@@ -21,13 +21,13 @@ import {
 import { RouteType } from './AppRouter';
 
 const formRoutes: RouteType[] = [
-  // Joruney start
-  // Shows current drafts
+  // Journey start
+  // Shows current drafts and also acts as the state holder
   {
     path: '/become-a-host',
     type: 'create-listing',
     title: 'become_host',
-    component: ManageListings,
+    component: FormJourney,
   },
 
   // Intro

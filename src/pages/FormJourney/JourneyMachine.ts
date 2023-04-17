@@ -6,6 +6,9 @@ interface FormContext {
 
 type FormEvent = { type: 'NEXT' } | { type: 'PREV' } | { type: 'SAVE' };
 
+// 1. Need to set guard on every step
+// 2. Actions on every state to update idx + formData
+
 const journeyMachine = Machine<FormContext, FormEvent>({
   id: 'journeyMachine',
   initial: 'overview',

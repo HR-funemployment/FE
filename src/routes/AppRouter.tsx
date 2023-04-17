@@ -5,7 +5,7 @@ import { RootState } from '../state/store';
 import DecideLayout from './DecideLayout';
 import formRoutes from './formRoutes';
 import { Login, Forget, SignUp } from '../components/Auth';
-import { HostingInfo, HostingInbox } from '../pages/Hosting';
+import { HostingAdmin, HostingInbox } from '../pages/Hosting';
 import HomePage from '../pages/HomePage';
 
 export interface RouteType {
@@ -52,7 +52,7 @@ const routes: RouteType[] = [
     path: '/hosting',
     type: 'hosting',
     title: 'host_admin',
-    component: HostingInfo,
+    component: HostingAdmin,
   },
   {
     path: '/hosting/inbox/folder/:filter',
