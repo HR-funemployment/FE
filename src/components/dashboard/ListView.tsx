@@ -1,9 +1,7 @@
-// import { useState} from 'react';
 import testArray from './testData';
 import ListItem from './ListItem';
 
 export default function ListView() {
-  console.log('testArray: ', testArray);
   return (
     <>
       <div>This is List View</div>

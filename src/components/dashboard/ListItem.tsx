@@ -1,4 +1,3 @@
-// import { useState} from 'react';
 import ListPhoto from './ListPhoto';
 
 interface ListProps {
