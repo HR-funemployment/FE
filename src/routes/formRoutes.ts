@@ -1,6 +1,6 @@
 import {
+  ManageDrafts,
   FormJourney,
-  HostOverview,
   S1BecomeAHost,
   S2Structure,
   S3Privacy,
@@ -27,7 +27,7 @@ const formRoutes: RouteType[] = [
     path: '/become-a-host',
     type: 'create-listing',
     title: 'become_host',
-    component: FormJourney,
+    component: ManageDrafts,
   },
 
   // Intro
@@ -36,7 +36,7 @@ const formRoutes: RouteType[] = [
     path: '/become-a-host/overview',
     type: 'create-listing',
     title: 'host_overview',
-    component: HostOverview,
+    component: FormJourney,
   },
 
   // Step 1

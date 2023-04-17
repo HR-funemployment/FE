@@ -64,9 +64,14 @@ const routes: RouteType[] = [
   ...formRoutes,
 ];
 
-const getPath = (title: string) => {
+const getPath = (title: string, idType?: string, id?: string) => {
   const route = routes.find((component) => component.title === title);
-  return route ? route.path : '/';
+  if (!route) return '/';
+  const { path } = route;
+  if (idType && id && path.includes(`:${idType}`)) {
+    return path.replace(`:${idType}`, id);
+  }
+  return path;
 };
 
 function AppRouter() {
