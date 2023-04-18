@@ -1,3 +1,4 @@
+import { Box, Flex, VStack, Text } from '@chakra-ui/react';
 import ListPhoto from './ListPhoto';
 
 interface ListProps {
@@ -11,11 +12,17 @@ interface ListProps {
 export default function RentalListItem({ name, neighborhood, price, photo, rating }: ListProps) {
   return (
     <>
-      <ListPhoto photo={photo} />
-      <div>{name}</div>
-      <div>{neighborhood}</div>
-      <div>{price}</div>
-      <div>{rating}</div>
+      <Flex>
+        <VStack spacing="10px" fontSize="sm">
+          <ListPhoto photo={photo} />
+          <Box display="flex" flexDirection="row" alignItems='left'>
+            <Text as="b" alignItems='left'>{neighborhood}</Text>
+            <Box alignItems='right'>{rating}</Box>
+          </Box>
+          <Text>{name}</Text>
+          <Box>{price}</Box>
+        </VStack>
+      </Flex>
     </>
   );
 }
