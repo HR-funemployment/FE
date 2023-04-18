@@ -8,7 +8,7 @@ interface ListProps {
   rating: number;
 }
 
-export default function ListItem({ name, neighborhood, price, photo, rating }: ListProps) {
+export default function RentalListItem({ name, neighborhood, price, photo, rating }: ListProps) {
   return (
     <>
       <ListPhoto photo={photo} />
