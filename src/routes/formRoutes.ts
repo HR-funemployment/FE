@@ -6,6 +6,8 @@ import {
   S3Privacy,
   S4Location,
   S5FloorPlan,
+  S5Private1,
+  S5Private2,
   S1StandOut,
   S2Amenities,
   S3Photos,
@@ -69,6 +71,19 @@ const formRoutes: RouteType[] = [
     type: 'create-listing',
     title: 'step1_floorplan',
     component: S5FloorPlan,
+  },
+  // Only for private rooms
+  {
+    path: '/become-a-host/:draftId/bathrooms',
+    type: 'create-listing',
+    title: 'step1_bathrooms',
+    component: S5Private1,
+  },
+  {
+    path: '/become-a-host/:draftId/occupancy',
+    type: 'create-listing',
+    title: 'step1_occupancy',
+    component: S5Private2,
   },
 
   // Step 2

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useMachine } from '@xstate/react';
 import { useNavigate } from 'react-router-dom';
-import { Flex, Button } from '@chakra-ui/react';
+import { Box, Flex, Button } from '@chakra-ui/react';
+import LogoBlack from '../Common/Logo';
 import { getPath } from '../../routes/AppRouter';
 import JourneyMachine from '../../pages/FormJourney/JourneyMachine';
 
@@ -15,32 +16,94 @@ export default function JourneyLayout({ children }: Props) {
 
   const handleNextStep = () => {
     send('NEXT');
+
     const nextState = JourneyMachine.transition(state, 'NEXT');
+
+    if (state.value === 'step2_title') {
+      navigate(getPath('step2_description'));
+      return;
+    }
+    if (typeof state.value === 'object') {
+      const currState = Object.values(state.value);
+      if (currState[0] === 'highlights') {
+        return;
+      }
+    }
+
     navigate(getPath(nextState.value.toString()));
   };
 
   const handlePrevStep = () => {
     send('PREV');
     const prevState = JourneyMachine.transition(state, 'PREV');
+
+    if (state.value === 'step3_finish') {
+      navigate(getPath('step2_description'));
+      return;
+    }
+
+    if (typeof state.value === 'object') {
+      const currState = Object.values(state.value);
+      if (currState[0] === 'description') {
+        return;
+      }
+    }
+
     navigate(getPath(prevState.value.toString()));
   };
 
+  const isStartOrFinish = !['host_overview', 'step3_publish'].includes(String(state.value));
+
+  let nextButtonText;
+  if (state.value === 'host_overview') nextButtonText = 'Get started';
+  else if (state.value === 'step3_review') nextButtonText = 'Publish';
+  else if (state.value === 'step3_publish') nextButtonText = 'Let’s get started';
+  else nextButtonText = 'Next';
+
   return (
-    <div>
-      This is navbar for the form journey
-      <br />
-      {React.Children.map(children, (child) => {
-        return React.cloneElement(child as React.ReactElement, { state });
-      })}
-      <br />
-      <Flex direction='row'>
-        {!['host_overview', 'step3_publish'].includes(String(state.value)) && (
-          <Button mr='2' onClick={handlePrevStep}>
-            Prev
-          </Button>
-        )}
-        <Button onClick={handleNextStep}>Next</Button>
+    <Box className='min-h-screen'>
+      <Box className='sticky top-0 z-50 flex items-center justify-between px-8 py-4'>
+        <Box className='cursor-pointer'>
+          <LogoBlack variant='black' />
+        </Box>
+        <Box>
+          {isStartOrFinish && (
+            <Button variant='border-rounded-black' className='mr-2'>
+              Questions?
+            </Button>
+          )}
+          <Button variant='border-rounded-black'>Save & Exit</Button>
+        </Box>
+      </Box>
+      <Flex
+        className='h-full flex-1 flex-col overflow-y-auto px-12'
+        style={{ minHeight: 'calc(100vh - 144px)' }}
+      >
+        {React.Children.map(children, (child) => {
+          return React.cloneElement(child as React.ReactElement, { state });
+        })}
       </Flex>
-    </div>
+      <Box className='sticky bottom-0 py-4'>
+        <Flex className='justify-between px-8'>
+          {isStartOrFinish ? (
+            <Button variant='transparent-underline' onClick={() => handlePrevStep()}>
+              Back
+            </Button>
+          ) : (
+            <Box />
+          )}
+          <Button
+            variant={
+              ['host_overview', 'step3_review', 'step3_publish'].includes(String(state.value))
+                ? 'red-solid'
+                : 'black-solid'
+            }
+            onClick={() => handleNextStep()}
+          >
+            {nextButtonText}
+          </Button>
+        </Flex>
+      </Box>
+    </Box>
   );
 }

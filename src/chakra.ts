@@ -3,7 +3,8 @@ import { extendTheme } from '@chakra-ui/react';
 const theme = extendTheme({
   colors: {
     primary: {
-      500: '#FF5A5F', // coral
+      400: '#F56565', // coral
+      500: '#E53E3E',
     },
     secondary: {
       500: '#008489', // teal
@@ -16,8 +17,9 @@ const theme = extendTheme({
     },
   },
   fonts: {
-    heading: 'Poppins, sans-serif',
-    body: 'Roboto, sans-serif',
+    body: `'Montserrat', sans-serif`,
+    heading: `'Montserrat', sans-serif`,
+    mono: `'Montserrat', sans-serif`,
   },
   components: {
     Button: {
@@ -25,11 +27,43 @@ const theme = extendTheme({
         borderRadius: 'md',
       },
       variants: {
-        solid: {
+        'red-solid': {
+          px: '6',
           bg: 'primary.500',
           color: 'white',
+          fontSize: '14px',
           _hover: {
-            bg: 'primary.600',
+            bg: 'primary.400',
+          },
+        },
+        'black-solid': {
+          px: '6',
+          bg: 'black',
+          color: 'white',
+          fontSize: '14px',
+          _hover: {
+            bg: 'gray.700',
+          },
+        },
+        'border-rounded-black': {
+          borderRadius: 'full',
+          color: 'black',
+          bg: 'transparent',
+          fontSize: '12px',
+          borderWidth: '1px',
+          borderColor: 'gray.400',
+          _hover: {
+            borderColor: 'black',
+          },
+        },
+        'transparent-underline': {
+          fontSize: '14px',
+          color: 'black',
+          bg: 'transparent',
+          border: 'none',
+          textDecoration: 'underline',
+          _hover: {
+            bg: 'gray.200',
           },
         },
       },
@@ -45,6 +79,23 @@ const theme = extendTheme({
           _focus: {
             borderColor: 'secondary.600',
             boxShadow: '0 0 0 1px rgba(0, 132, 137, 0.6)',
+          },
+        },
+      },
+    },
+    Checkbox: {
+      variants: {
+        black: {
+          control: {
+            _checked: {
+              bg: 'black',
+              borderColor: 'white',
+              border: 'black',
+              _hover: {
+                bg: 'black',
+                border: 'none',
+              },
+            },
           },
         },
       },

@@ -1,4 +1,3 @@
-import './styles/App.css';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import { AppRouter } from './routes/AppRouter';
