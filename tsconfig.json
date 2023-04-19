@@ -19,5 +19,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", ".eslintrc.cjs", "vite.config.ts"]
+  "include": ["src", ".eslintrc.cjs", "vite.config.ts", "socket.io_server"]
 }

@@ -24,6 +24,7 @@ export default function Navbar() {
         Routing Example Button
       </ChakraLink>
       <br />
+      <ChakraLink href={getPath('message')}>message</ChakraLink>
       <br />
       <div style={{ position: 'relative' }}>
         <Menu>
