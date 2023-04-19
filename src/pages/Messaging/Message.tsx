@@ -1,18 +1,18 @@
 // src/components/MyComponent.js
 import React, { useState, useEffect } from 'react';
 import useSocket from './useSocket';
-import socket from './socket';
+import {socket} from './socket';
 
 function Message() {
   const [shouldConnect, setShouldConnect] = useState(false);
   const [inputMessage, setInputMessage] = useState('');
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState<object[]>([]);
 
   useSocket(shouldConnect);
 
   useEffect(() => {
-    socket.on('message', (message) => {
-      setMessages((prevMessages) => [...prevMessages, message]);
+    socket.on('message', (data) => {
+      setMessages((prevMessages) => [...prevMessages, data]);
     });
 
     return () => {
@@ -41,8 +41,8 @@ function Message() {
       {shouldConnect && (
         <div>
           <ul>
-            {messages.map((message, index) => (
-              <li key={index}>{message}</li>
+            {messages.map((message: {id: string; text: string; created: string}, index) => (
+              <li key={index}>{message.id + ' '+ message.text +' ' + message.created}</li>
             ))}
           </ul>
           <input

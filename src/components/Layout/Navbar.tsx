@@ -15,6 +15,7 @@ import { getPath } from '../../routes/AppRouter';
 
 export default function Navbar() {
   const { user } = useSelector((state) => state.user);
+  console.log(user)
   const dispatch = useDispatch();
   return (
     <div style={{ height: '4rem', backgroundColor: 'gray' }}>

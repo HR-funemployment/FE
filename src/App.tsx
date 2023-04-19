@@ -8,7 +8,10 @@ import { login } from './state/user';
 function App() {
   const dispatch = useDispatch();
   onAuthStateChanged(auth, (userAuth) => {
-    dispatch(login(JSON.stringify(userAuth)));
+    console.log(userAuth, 'this is')
+    if (userAuth) {
+      dispatch(login(JSON.stringify(userAuth.uid)));
+    }
   });
 
   return (
