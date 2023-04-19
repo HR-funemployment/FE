@@ -20,6 +20,7 @@ export default function Navbar() {
       <div>Navbar Placeholder</div>
       <ChakraLink href={getPath('host_admin')}>Routing Example Button1</ChakraLink>
       <br />
+      <ChakraLink href={getPath('message')}>message</ChakraLink>
       <br />
       <div style={{ position: 'relative' }}>
         <Menu>
