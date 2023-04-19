@@ -6,13 +6,13 @@ import socket from './socket';
 function Message() {
   const [shouldConnect, setShouldConnect] = useState(false);
   const [inputMessage, setInputMessage] = useState('');
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState<string[]>([]);
 
   useSocket(shouldConnect);
 
   useEffect(() => {
-    socket.on('message', (message: unknown) => {
-      setMessages((prevMessages: unknown) => [...prevMessages, message]);
+    socket.on('message', (message) => {
+      setMessages((prevMessages) => [...prevMessages, message]);
     });
 
     return () => {
