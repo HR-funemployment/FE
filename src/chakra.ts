@@ -16,8 +16,9 @@ const theme = extendTheme({
     },
   },
   fonts: {
-    heading: 'Poppins, sans-serif',
-    body: 'Roboto, sans-serif',
+    body: `'Montserrat', sans-serif`,
+    heading: `'Montserrat', sans-serif`,
+    mono: `'Montserrat', sans-serif`,
   },
   components: {
     Button: {
@@ -30,6 +31,36 @@ const theme = extendTheme({
           color: 'white',
           _hover: {
             bg: 'primary.600',
+          },
+        },
+        'black-solid': {
+          px: '6',
+          bg: 'black',
+          color: 'white',
+          fontSize: '14px',
+          _hover: {
+            bg: 'gray.700',
+          },
+        },
+        'border-rounded-black': {
+          borderRadius: 'full',
+          color: 'black',
+          bg: 'transparent',
+          fontSize: '12px',
+          borderWidth: '1px',
+          borderColor: 'gray.400',
+          _hover: {
+            borderColor: 'black',
+          },
+        },
+        'transparent-underline': {
+          fontSize: '14px',
+          color: 'black',
+          bg: 'transparent',
+          border: 'none',
+          textDecoration: 'underline',
+          _hover: {
+            bg: 'gray.200',
           },
         },
       },

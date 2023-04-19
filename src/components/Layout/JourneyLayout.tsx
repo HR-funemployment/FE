@@ -36,25 +36,11 @@ export default function JourneyLayout({ children }: Props) {
         </Box>
         <Box>
           {isStartOrFinish && (
-            <Button
-              borderRadius='full'
-              color='black'
-              bg='transparent'
-              fontSize='12px'
-              className='mr-2 border border-gray-400 hover:border-black'
-            >
+            <Button variant='border-rounded-black' className='mr-2'>
               Questions?
             </Button>
           )}
-          <Button
-            borderRadius='full'
-            color='black'
-            bg='transparent'
-            fontSize='12px'
-            className='border border-gray-400 hover:border-black'
-          >
-            Save & Exit
-          </Button>
+          <Button variant='border-rounded-black'>Save & Exit</Button>
         </Box>
       </Box>
       <Flex
@@ -68,20 +54,13 @@ export default function JourneyLayout({ children }: Props) {
       <Box className='sticky bottom-0 py-4'>
         <Flex className='justify-between px-8'>
           {isStartOrFinish ? (
-            <Button
-              fontSize='14px'
-              color='black'
-              bg='transparent'
-              border='none'
-              className='underline hover:bg-gray-200'
-              onClick={handlePrevStep}
-            >
+            <Button variant='transparent-underline' onClick={handlePrevStep}>
               Back
             </Button>
           ) : (
             <Box />
           )}
-          <Button px='6' bg='black' fontSize='14px' onClick={handleNextStep}>
+          <Button variant='black-solid' onClick={handleNextStep}>
             Next
           </Button>
         </Flex>

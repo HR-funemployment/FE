@@ -5,8 +5,8 @@ export default function HostOverview() {
     <Flex className='flex-grow items-center justify-center'>
       <Flex className='w-full max-w-6xl'>
         <Flex className='w-1/2 flex-col items-start justify-center px-4'>
-          <Text className='mb-2 text-xl'>Step 1</Text>
-          <Text className='mb-2 text-4xl font-bold'>Tell us about your place</Text>
+          <Text className='mb-4 text-xl font-semibold'>Step 1</Text>
+          <Text className='mb-6 text-5xl font-semibold'>Tell us about your place</Text>
           <Text>
             In this step, we'll ask you which type of property you have and if guests will book the
             entire place or just a room. Then let us know the location and how many guests can stay.
