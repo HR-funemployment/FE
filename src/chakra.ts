@@ -83,6 +83,23 @@ const theme = extendTheme({
         },
       },
     },
+    Checkbox: {
+      variants: {
+        black: {
+          control: {
+            _checked: {
+              bg: 'black',
+              borderColor: 'white',
+              border: 'black',
+              _hover: {
+                bg: 'black',
+                border: 'none',
+              },
+            },
+          },
+        },
+      },
+    },
   },
 });
 
