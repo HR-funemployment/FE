@@ -2,7 +2,7 @@ import React from 'react';
 import { useMachine } from '@xstate/react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Flex, Button } from '@chakra-ui/react';
-import LogoBlack from '../../assets/svg/logo-black';
+import LogoBlack from '../Common/Logo';
 import { getPath } from '../../routes/AppRouter';
 import JourneyMachine from '../../pages/FormJourney/JourneyMachine';
 
@@ -32,7 +32,7 @@ export default function JourneyLayout({ children }: Props) {
     <Box className='min-h-screen'>
       <Box className='sticky top-0 z-50 flex items-center justify-between px-8 py-4'>
         <Box className='cursor-pointer'>
-          <LogoBlack />
+          <LogoBlack variant='black' />
         </Box>
         <Box>
           {isStartOrFinish && (
@@ -60,8 +60,11 @@ export default function JourneyLayout({ children }: Props) {
           ) : (
             <Box />
           )}
-          <Button variant='black-solid' onClick={handleNextStep}>
-            Next
+          <Button
+            variant={state.value === 'host_overview' ? 'red-solid' : 'black-solid'}
+            onClick={handleNextStep}
+          >
+            {state.value === 'host_overview' ? 'Get started' : 'Next'}
           </Button>
         </Flex>
       </Box>

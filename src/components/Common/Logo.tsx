@@ -1,20 +1,22 @@
-export default function LogoBlack() {
+export default function Logo({ variant }: { variant: string }) {
   return (
-    <svg
-      version='1.0'
-      xmlns='http://www.w3.org/2000/svg'
-      width='30px'
-      height='30px'
-      viewBox='0 0 512.000000 512.000000'
-      preserveAspectRatio='xMidYMid meet'
-    >
-      <g
-        transform='translate(0.000000,512.000000) scale(0.100000,-0.100000)'
-        fill='#000000'
-        stroke='none'
-      >
-        <path
-          d='M2403 5106 c-170 -33 -302 -97 -441 -214 -124 -105 -120 -98 -1008
+    <div>
+      {variant === 'black' && (
+        <svg
+          version='1.0'
+          xmlns='http://www.w3.org/2000/svg'
+          width='30px'
+          height='30px'
+          viewBox='0 0 512.000000 512.000000'
+          preserveAspectRatio='xMidYMid meet'
+        >
+          <g
+            transform='translate(0.000000,512.000000) scale(0.100000,-0.100000)'
+            fill='#000000'
+            stroke='none'
+          >
+            <path
+              d='M2403 5106 c-170 -33 -302 -97 -441 -214 -124 -105 -120 -98 -1008
  -1875 -517 -1033 -846 -1703 -865 -1758 -118 -352 -10 -755 271 -1011 212
  -194 519 -283 803 -233 116 20 238 66 334 125 48 30 277 218 572 470 l491 421
  486 -416 c268 -230 518 -437 555 -461 332 -215 768 -200 1089 37 328 241 469
@@ -31,8 +33,10 @@ export default function LogoBlack() {
  -194 57 -262 -9 -61 -54 -149 -126 -246 -77 -105 -372 -400 -400 -400 -26 0
  -329 300 -399 395 -73 98 -123 204 -129 268 -4 57 16 157 46 227 59 136 205
  258 355 296 75 19 227 12 302 -15z'
-        />
-      </g>
-    </svg>
+            />
+          </g>
+        </svg>
+      )}
+    </div>
   );
 }

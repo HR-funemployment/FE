@@ -3,7 +3,8 @@ import { extendTheme } from '@chakra-ui/react';
 const theme = extendTheme({
   colors: {
     primary: {
-      500: '#FF5A5F', // coral
+      400: '#F56565', // coral
+      500: '#E53E3E',
     },
     secondary: {
       500: '#008489', // teal
@@ -26,11 +27,13 @@ const theme = extendTheme({
         borderRadius: 'md',
       },
       variants: {
-        solid: {
+        'red-solid': {
+          px: '6',
           bg: 'primary.500',
           color: 'white',
+          fontSize: '14px',
           _hover: {
-            bg: 'primary.600',
+            bg: 'primary.400',
           },
         },
         'black-solid': {
