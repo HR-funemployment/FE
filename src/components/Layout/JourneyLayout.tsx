@@ -94,7 +94,7 @@ export default function JourneyLayout({ children }: Props) {
           )}
           <Button
             variant={
-              ['host_overview', 'step3_review'].includes(String(state.value))
+              ['host_overview', 'step3_review', 'step3_publish'].includes(String(state.value))
                 ? 'red-solid'
                 : 'black-solid'
             }

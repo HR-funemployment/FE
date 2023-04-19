@@ -51,6 +51,21 @@ const journeyMachine = Machine<FormContext, FormEvent>({
         NEXT: 'step2_standout',
       },
     },
+    // only for private rooms
+    // TODO: set condition above to check for privacy === 'private room'
+    // step1_bathrooms: {
+    //   on: {
+    //     PREV: 'step1_floorplan',
+    //     NEXT: 'step1_occupancy',
+    //   },
+    // },
+    // step1_occupancy: {
+    //   on: {
+    //     PREV: 'step1_bathrooms',
+    //     NEXT: 'step2_standout',
+    //   },
+    // },
+
     // Step 2
     step2_standout: {
       on: {
