@@ -7,7 +7,7 @@ import formRoutes from './formRoutes';
 import { Login, Forget, SignUp } from '../components/Auth';
 import { HostingAdmin, HostingInbox } from '../pages/Hosting';
 import HomePage from '../pages/HomePage';
-import Message from '../messaging/Message';
+import Message from '../pages/Messaging/Message';
 
 export interface RouteType {
   path: string;

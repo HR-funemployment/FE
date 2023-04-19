@@ -7,8 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview",
-    "message": "ts-node --esm ./socket.io_server/socketServer.ts"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.18",
