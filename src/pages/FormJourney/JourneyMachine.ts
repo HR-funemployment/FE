@@ -1,31 +1,29 @@
 import { Machine } from 'xstate';
+import { FormContext, FormEvent } from './types';
 
-interface FormContext {
-  currentIdx: number;
-}
-
-type FormEvent = { type: 'NEXT' } | { type: 'PREV' } | { type: 'SAVE' };
+// 1. Need to set guard on every step
+// 2. Actions on every state to update idx + formData
 
 const journeyMachine = Machine<FormContext, FormEvent>({
   id: 'journeyMachine',
-  initial: 'overview',
+  initial: 'host_overview',
   context: {
     currentIdx: 0,
   },
   states: {
-    overview: {
+    host_overview: {
       on: {
         NEXT: {
           target: 'step1_about',
           // need to create a draft here
-          actions: ['createListingDraft'],
+          // actions: ['createListingDraft'],
         },
       },
     },
     // Step 1
     step1_about: {
       on: {
-        PREV: 'overview',
+        PREV: 'host_overview',
         NEXT: 'step1_structure',
       },
     },

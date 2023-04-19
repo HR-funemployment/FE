@@ -8,7 +8,7 @@ import { login } from './state/user';
 function App() {
   const dispatch = useDispatch();
   onAuthStateChanged(auth, (userAuth) => {
-    dispatch(login(userAuth));
+    dispatch(login(JSON.stringify(userAuth)));
   });
 
   return (
