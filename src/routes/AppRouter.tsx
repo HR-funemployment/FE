@@ -7,6 +7,7 @@ import formRoutes from './formRoutes';
 import { Login, Forget, SignUp } from '../components/Auth';
 import { HostingAdmin, HostingInbox } from '../pages/Hosting';
 import HomePage from '../pages/HomePage';
+import Message from '../messaging/Message';
 
 export interface RouteType {
   path: string;
@@ -24,6 +25,12 @@ const routes: RouteType[] = [
     type: 'listing',
     title: 'home',
     component: HomePage,
+  },
+  {
+    path: '/message',
+    type: 'message',
+    title: 'message',
+    component: Message,
   },
 
   // Authentication
