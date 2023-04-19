@@ -21,9 +21,8 @@ export default function HostOverview() {
     },
   ];
 
-  const newLocal = 'flex-grow items-center justify-center';
   return (
-    <Flex className={newLocal}>
+    <Flex className='flex-grow items-center justify-center'>
       <Flex className='w-full max-w-6xl'>
         <Flex className='w-1/2 flex-col items-start justify-center px-4'>
           <Text className='mb-4 text-5xl font-semibold'>It’s easy to get started on Airbnb</Text>
