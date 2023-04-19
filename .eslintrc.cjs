@@ -13,6 +13,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
+  ignorePatterns: ['tailwind.config.cjs', 'postcss.config.cjs'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
