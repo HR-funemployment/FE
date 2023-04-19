@@ -54,6 +54,12 @@ export default function JourneyLayout({ children }: Props) {
 
   const isStartOrFinish = !['host_overview', 'step3_publish'].includes(String(state.value));
 
+  let nextButtonText;
+  if (state.value === 'host_overview') nextButtonText = 'Get started';
+  else if (state.value === 'step3_review') nextButtonText = 'Publish';
+  else if (state.value === 'step3_publish') nextButtonText = 'Let’s get started';
+  else nextButtonText = 'Next';
+
   return (
     <Box className='min-h-screen'>
       <Box className='sticky top-0 z-50 flex items-center justify-between px-8 py-4'>
@@ -87,10 +93,14 @@ export default function JourneyLayout({ children }: Props) {
             <Box />
           )}
           <Button
-            variant={state.value === 'host_overview' ? 'red-solid' : 'black-solid'}
+            variant={
+              ['host_overview', 'step3_review'].includes(String(state.value))
+                ? 'red-solid'
+                : 'black-solid'
+            }
             onClick={() => handleNextStep()}
           >
-            {state.value === 'host_overview' ? 'Get started' : 'Next'}
+            {nextButtonText}
           </Button>
         </Flex>
       </Box>

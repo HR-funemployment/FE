@@ -46,6 +46,7 @@ export default function DescriptionForm({ state }: { state: any }) {
           <Text className='mb-8 text-gray-500'>Share what makes your place special.</Text>
           <textarea
             className='h-36 w-full max-w-4xl rounded-lg border border-gray-300 p-2 outline-none focus:border-black'
+            // placeholder custom depending on selection of highlights
             onChange={(e) => setValue(e.target.value)}
           />
           <Box className='text-sm text-gray-500'>{value.length}/500</Box>
