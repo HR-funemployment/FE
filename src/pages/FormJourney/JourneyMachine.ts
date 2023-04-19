@@ -77,9 +77,21 @@ const journeyMachine = Machine<FormContext, FormEvent>({
       },
     },
     step2_description: {
-      on: {
-        PREV: 'step2_title',
-        NEXT: 'step3_finish',
+      initial: 'highlights',
+      // There are two parts to description
+      states: {
+        highlights: {
+          on: {
+            PREV: '#journeyMachine.step2_title',
+            NEXT: 'description',
+          },
+        },
+        description: {
+          on: {
+            PREV: 'highlights',
+            NEXT: '#journeyMachine.step3_finish',
+          },
+        },
       },
     },
     // Step 3

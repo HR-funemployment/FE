@@ -5,19 +5,19 @@ export default function HostOverview() {
     {
       header: 'Tell us about your place',
       description: 'Share some basic info, like where it is and how many guests can stay',
-      url: '../../../public/assets/images/overview-1.webp',
+      url: '../../../assets/images/overview-1.webp',
     },
     {
       header: 'Make it stand out',
       description:
         'Make it stand out Add 5 or more photos plus a title and description—we’ll help you out.',
-      url: '../../../public/assets/images/overview-2.webp',
+      url: '../../../assets/images/overview-2.webp',
     },
     {
       header: 'Finish up and publish',
       description:
         'Choose if you’d like to start with an experienced guest, set a starting price, and publish your listing.',
-      url: '../../../public/assets/images/overview-3.webp',
+      url: '../../../assets/images/overview-3.webp',
     },
   ];
 

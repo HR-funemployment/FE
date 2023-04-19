@@ -16,13 +16,39 @@ export default function JourneyLayout({ children }: Props) {
 
   const handleNextStep = () => {
     send('NEXT');
+
     const nextState = JourneyMachine.transition(state, 'NEXT');
+
+    if (state.value === 'step2_title') {
+      navigate(getPath('step2_description'));
+      return;
+    }
+    if (typeof state.value === 'object') {
+      const currState = Object.values(state.value);
+      if (currState[0] === 'highlights') {
+        return;
+      }
+    }
+
     navigate(getPath(nextState.value.toString()));
   };
 
   const handlePrevStep = () => {
     send('PREV');
     const prevState = JourneyMachine.transition(state, 'PREV');
+
+    if (state.value === 'step3_finish') {
+      navigate(getPath('step2_description'));
+      return;
+    }
+
+    if (typeof state.value === 'object') {
+      const currState = Object.values(state.value);
+      if (currState[0] === 'description') {
+        return;
+      }
+    }
+
     navigate(getPath(prevState.value.toString()));
   };
 
@@ -54,7 +80,7 @@ export default function JourneyLayout({ children }: Props) {
       <Box className='sticky bottom-0 py-4'>
         <Flex className='justify-between px-8'>
           {isStartOrFinish ? (
-            <Button variant='transparent-underline' onClick={handlePrevStep}>
+            <Button variant='transparent-underline' onClick={() => handlePrevStep()}>
               Back
             </Button>
           ) : (
@@ -62,7 +88,7 @@ export default function JourneyLayout({ children }: Props) {
           )}
           <Button
             variant={state.value === 'host_overview' ? 'red-solid' : 'black-solid'}
-            onClick={handleNextStep}
+            onClick={() => handleNextStep()}
           >
             {state.value === 'host_overview' ? 'Get started' : 'Next'}
           </Button>
