@@ -1,33 +1,8 @@
-import { useState } from 'react';
 import { Flex, Box, Text } from '@chakra-ui/react';
-import { SlCalender } from 'react-icons/Sl';
-import { BsPencil } from 'react-icons/bs';
-import { RiKnifeBloodLine } from 'react-icons/Ri';
 import { AiFillStar } from 'react-icons/ai';
+import { nextSteps } from '../constants';
 
 export default function Review() {
-  const [value, setValue] = useState('');
-
-  const nextSteps = [
-    {
-      header: 'Set up your calender',
-      description:
-        'Choose which dates are available. Guests can start booking 24 hours after you publish',
-      icon: SlCalender,
-    },
-    {
-      header: 'Adjust your settings',
-      description:
-        'Set house rules, select a cancellation policy, choose how guests can book, and more',
-      icon: BsPencil,
-    },
-    {
-      header: 'Prepare for your first guest',
-      description: 'Find tips in our Resource center and access customer support',
-      icon: RiKnifeBloodLine,
-    },
-  ];
-
   return (
     <Flex className='flex-grow items-center justify-center'>
       <Box className='max-w-3xl'>

@@ -1,41 +1,7 @@
 import { Flex, Box, Text } from '@chakra-ui/react';
+import { amenityOptions, standoutOptions, safetyOptions } from '../constants';
 
 export default function AmenitiesForm() {
-  const amenityOptions = [
-    { name: 'Wifi', icon: '' },
-    { name: 'TV', icon: '' },
-    { name: 'Kitchen', icon: '' },
-    { name: 'Washer', icon: '' },
-    { name: 'Free parking on premises', icon: '' },
-    { name: 'Paid parking on premises', icon: '' },
-    { name: 'Air conditioning', icon: '' },
-    { name: 'Dedicated workspace', icon: '' },
-  ];
-
-  const standoutOptions = [
-    { name: 'Pool', icon: '' },
-    { name: 'Hot tub', icon: '' },
-    { name: 'Patio', icon: '' },
-    { name: 'BBQ grill', icon: '' },
-    { name: 'Outdoor dining area', icon: '' },
-    { name: 'Fire pit', icon: '' },
-    { name: 'Pool table', icon: '' },
-    { name: 'Indoor fireplace', icon: '' },
-    { name: 'Piano', icon: '' },
-    { name: 'Exercise Equipment', icon: '' },
-    { name: 'Lake access', icon: '' },
-    { name: 'Beach access', icon: '' },
-    { name: 'Ski-in/Ski-out', icon: '' },
-    { name: 'Outdoor shower', icon: '' },
-  ];
-
-  const safetyOptions = [
-    { name: 'Smoke alarm', icon: '' },
-    { name: 'First aid kit', icon: '' },
-    { name: 'Fire extinguisher', icon: '' },
-    { name: 'Carbon monoxide alarm', icon: '' },
-  ];
-
   return (
     <Flex className='justify-center'>
       <Flex className='flex-col pt-4'>

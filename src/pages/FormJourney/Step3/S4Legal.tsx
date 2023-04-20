@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Flex, Box, Text, Checkbox } from '@chakra-ui/react';
+import { securityOptions as options } from '../constants';
 
 const securityOptions = {
   cameras: false,
@@ -12,11 +13,6 @@ type SecurityFormTypes = typeof securityOptions & {
 };
 
 export default function LegalForm() {
-  const options = [
-    { key: 'cameras', value: 'Security camera(s)' },
-    { key: 'weapons', value: 'Weapons' },
-    { key: 'animals', value: 'Dangerous animals' },
-  ];
   const [form, setForm] = useState<SecurityFormTypes>(securityOptions);
 
   const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {

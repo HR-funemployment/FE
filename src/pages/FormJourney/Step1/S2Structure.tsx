@@ -1,40 +1,7 @@
 import { Flex, Box, Text } from '@chakra-ui/react';
+import { structureOptions as options } from '../constants';
 
 export default function StructureForm() {
-  const options = [
-    { name: 'House', icon: '' },
-    { name: 'Apartment', icon: '' },
-    { name: 'Barn', icon: '' },
-    { name: 'Bed & Breakfast', icon: '' },
-    { name: 'Boat', icon: '' },
-    { name: 'Cabin', icon: '' },
-    { name: 'Camper/RV', icon: '' },
-    { name: 'Casa particular', icon: '' },
-    { name: 'Castle', icon: '' },
-    { name: 'Cave', icon: '' },
-    { name: 'Container', icon: '' },
-    { name: 'Cycladic home', icon: '' },
-    { name: 'Dammuso', icon: '' },
-    { name: 'Dome', icon: '' },
-    { name: 'Earth home', icon: '' },
-    { name: 'Farm', icon: '' },
-    { name: 'Guesthouse', icon: '' },
-    { name: 'Hotel', icon: '' },
-    { name: 'Houseboat', icon: '' },
-    { name: 'Kezhan', icon: '' },
-    { name: 'Minsu', icon: '' },
-    { name: 'Riad', icon: '' },
-    { name: 'Ryokan', icon: '' },
-    { name: 'Shepherd’s Hut', icon: '' },
-    { name: 'Tent', icon: '' },
-    { name: 'Tiny home', icon: '' },
-    { name: 'Tower', icon: '' },
-    { name: 'Treehouse', icon: '' },
-    { name: 'Trullo', icon: '' },
-    { name: 'Windmill', icon: '' },
-    { name: 'Yurt', icon: '' },
-  ];
-
   return (
     <Flex className='justify-center'>
       <Flex className='flex-col pt-4'>

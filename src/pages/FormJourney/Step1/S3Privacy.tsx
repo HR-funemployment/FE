@@ -1,25 +1,7 @@
 import { Flex, Box, Text } from '@chakra-ui/react';
-import { BsHouseDoor, BsDoorOpen, BsPeople } from 'react-icons/bs';
+import { privacyOptions as options } from '../constants';
 
 export default function PrivacyForm() {
-  const options = [
-    {
-      header: 'An entire place',
-      description: 'Guests have the whole place to themselves.',
-      icon: BsHouseDoor,
-    },
-    {
-      header: 'A private room',
-      description: 'Guests sleep in a private room but some areas may be shared with you or others',
-      icon: BsDoorOpen,
-    },
-    {
-      header: 'An shared room',
-      description: 'Guests sleep in a room or common area that may be shared with you or others',
-      icon: BsPeople,
-    },
-  ];
-
   return (
     <Flex className='flex-grow items-center justify-center'>
       <Box className='max-w-4xl'>

@@ -1,20 +1,9 @@
 import { useState } from 'react';
 import { Flex, Box, Text } from '@chakra-ui/react';
-import { SlDiamond } from 'react-icons/Sl';
-import { GiFireplace, GiGreekTemple } from 'react-icons/Gi';
-import { BsFlower1 } from 'react-icons/bs';
-import { AiOutlinePicture, AiOutlineGift } from 'react-icons/ai';
+import { highlightOptions as options } from '../constants';
 
 export default function DescriptionForm({ state }: { state: any }) {
   const [value, setValue] = useState('');
-  const options = [
-    { name: 'Rare', icon: SlDiamond },
-    { name: 'Rustic', icon: GiFireplace },
-    { name: 'In nature', icon: BsFlower1 },
-    { name: 'Memorable', icon: AiOutlinePicture },
-    { name: 'Romantic', icon: AiOutlineGift },
-    { name: 'Historic', icon: GiGreekTemple },
-  ];
 
   const currState = Object.values(state.value)[0];
 
