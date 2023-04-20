@@ -3,9 +3,22 @@ import { Flex, Box, Text } from '@chakra-ui/react';
 import { highlightOptions as options } from '../constants';
 
 export default function DescriptionForm({ state }: { state: any }) {
+  const [highlights, setHighlights] = useState<string[]>([]);
   const [value, setValue] = useState('');
 
   const currState = Object.values(state.value)[0];
+
+  const addHighlight = (highlight: string) => {
+    if (highlights.includes(highlight)) {
+      return setHighlights((prev) => prev.filter((i) => i !== highlight));
+    }
+    if (highlights.length === 2) {
+      setHighlights((prev) => [prev[1], highlight]);
+    } else {
+      setHighlights((prev) => [...prev, highlight]);
+    }
+    return null;
+  };
 
   return (
     <Flex className='flex-grow items-center justify-center'>
@@ -20,7 +33,10 @@ export default function DescriptionForm({ state }: { state: any }) {
             {options.map((option) => (
               <Flex
                 key={option.name}
-                className='cursor-pointer items-center gap-2 rounded-full border border-gray-300 p-4 hover:border-black'
+                className={`cursor-pointer items-center gap-2 rounded-full border  p-4 hover:border-black ${
+                  highlights.includes(option.name) ? 'border-black' : 'border-gray-300'
+                }`}
+                onClick={() => addHighlight(option.name)}
               >
                 <option.icon className='h-6 w-6' />
                 <Text className='text-sm font-semibold'>{option.name}</Text>
