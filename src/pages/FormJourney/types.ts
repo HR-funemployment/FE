@@ -42,11 +42,23 @@ interface FormContext {
 }
 
 export interface MachineContext {
+  draft_id: number | null;
   privacy_type: string;
   form_data: FormContext;
+  nextStep?: string;
 }
 
-export type FormEvent = { type: 'NEXT' } | { type: 'PREV' } | { type: 'SAVE' };
+export type PrivacySelectType = {
+  type: 'PRIVACY_SELECT';
+  privacy: string;
+};
+
+export type FormEvent =
+  | { type: 'NEXT' }
+  | { type: 'PREV' }
+  | { type: 'SAVE' }
+  | { type: 'RETRY' }
+  | PrivacySelectType;
 
 export interface FormStateSchema {
   states: {
@@ -56,6 +68,8 @@ export interface FormStateSchema {
     step1_privacy: object;
     step1_location: object;
     step1_floorplan: object;
+    step1_bathrooms: object;
+    step1_occupancy: object;
     step2_standout: object;
     step2_amenities: object;
     step2_photos: object;

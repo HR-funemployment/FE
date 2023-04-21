@@ -1,14 +1,16 @@
-import { Machine } from 'xstate';
-import { MachineContext, FormEvent } from './types';
+import { createMachine, assign } from 'xstate';
+import { createDraftListing } from './api/listings';
+import { MachineContext, FormEvent, PrivacySelectType } from './types';
 
 // 1. Need to set guard on every step
 // 2. Actions on every state to update idx + formData
 
-const journeyMachine = Machine<MachineContext, FormEvent>({
+const journeyMachine = createMachine<MachineContext, FormEvent>({
   id: 'journeyMachine',
   initial: 'host_overview',
   context: {
     privacy_type: '',
+    draft_id: null,
     form_data: {
       structure_type: '',
       room_type: '',
@@ -71,6 +73,11 @@ const journeyMachine = Machine<MachineContext, FormEvent>({
       on: {
         PREV: 'step1_about',
         NEXT: 'step1_privacy',
+        PRIVACY_SELECT: {
+          actions: assign<MachineContext, PrivacySelectType>({
+            privacy_type: (_, event) => event.privacy,
+          }),
+        },
       },
     },
     step1_privacy: {
@@ -88,7 +95,11 @@ const journeyMachine = Machine<MachineContext, FormEvent>({
     step1_floorplan: {
       on: {
         PREV: 'step1_location',
-        NEXT: 'step2_standout',
+        NEXT: {
+          actions: assign((context: MachineContext) => ({
+            nextStep: context.privacy_type === 'private' ? 'step1_bathrooms' : 'step2_standout',
+          })),
+        },
       },
     },
     // only for private rooms
