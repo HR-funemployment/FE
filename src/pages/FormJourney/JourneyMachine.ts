@@ -1,14 +1,54 @@
 import { Machine } from 'xstate';
-import { FormContext, FormEvent } from './types';
+import { MachineContext, FormEvent } from './types';
 
 // 1. Need to set guard on every step
 // 2. Actions on every state to update idx + formData
 
-const journeyMachine = Machine<FormContext, FormEvent>({
+const journeyMachine = Machine<MachineContext, FormEvent>({
   id: 'journeyMachine',
   initial: 'host_overview',
   context: {
-    currentIdx: 0,
+    privacy_type: '',
+    form_data: {
+      structure_type: '',
+      room_type: '',
+      property_type: '',
+      street_address: '',
+      apt: '',
+      city: '',
+      state_province_territory: '',
+      postal_code: '',
+      full_address: '',
+      neighborhood_overview: '',
+      neighbourhood: '',
+      neighbourhood_cleansed: '',
+      latitude: null,
+      longitude: null,
+      bedrooms: null,
+      beds: null,
+      accommodates: null,
+      bathrooms: null,
+      lock_available: null,
+      other_guests: '',
+      bathrooms_text: '',
+      private_bathrooms: null,
+      dedicated_bathrooms: null,
+      shared_bathrooms: null,
+      amenities: [],
+      standout_amenities: [],
+      safety_items: [],
+      picture_url: '',
+      property_photos: [],
+      name: '',
+      highlights: [],
+      description: '',
+      allows_any_guests: null,
+      price: null,
+      offering_discounts: null,
+      security_cameras: null,
+      weapons: null,
+      dangerous_animals: null,
+    },
   },
   states: {
     host_overview: {
@@ -52,19 +92,18 @@ const journeyMachine = Machine<FormContext, FormEvent>({
       },
     },
     // only for private rooms
-    // TODO: set condition above to check for privacy === 'private room'
-    // step1_bathrooms: {
-    //   on: {
-    //     PREV: 'step1_floorplan',
-    //     NEXT: 'step1_occupancy',
-    //   },
-    // },
-    // step1_occupancy: {
-    //   on: {
-    //     PREV: 'step1_bathrooms',
-    //     NEXT: 'step2_standout',
-    //   },
-    // },
+    step1_bathrooms: {
+      on: {
+        PREV: 'step1_floorplan',
+        NEXT: 'step1_occupancy',
+      },
+    },
+    step1_occupancy: {
+      on: {
+        PREV: 'step1_bathrooms',
+        NEXT: 'step2_standout',
+      },
+    },
 
     // Step 2
     step2_standout: {
@@ -153,10 +192,6 @@ const journeyMachine = Machine<FormContext, FormEvent>({
       type: 'final',
     },
   },
-  // actions: {
-  //   createListingDraft: () => {},
-  //   submitListing: () => {},
-  // },
 });
 
 export default journeyMachine;

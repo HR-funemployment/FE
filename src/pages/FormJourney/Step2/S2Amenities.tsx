@@ -22,7 +22,7 @@ export default function AmenitiesForm() {
           {amenityOptions.map((option) => (
             <Box
               key={option.name}
-              className={`w-44 cursor-pointer rounded-md border border-gray-300 p-2 hover:border-black ${
+              className={`w-44 cursor-pointer rounded-md border  p-2 hover:border-black ${
                 amenities.includes(option.name) ? 'border-black' : 'border-gray-300'
               }`}
               onClick={() => handleInput(option.name)}
@@ -36,7 +36,7 @@ export default function AmenitiesForm() {
           {standoutOptions.map((option) => (
             <Box
               key={option.name}
-              className={`w-44 cursor-pointer rounded-md border border-gray-300 p-2 hover:border-black ${
+              className={`w-44 cursor-pointer rounded-md border  p-2 hover:border-black ${
                 amenities.includes(option.name) ? 'border-black' : 'border-gray-300'
               }`}
               onClick={() => handleInput(option.name)}

@@ -63,7 +63,7 @@ export default function JourneyLayout({ children }: Props) {
   return (
     <Box className='min-h-screen'>
       <Box className='sticky top-0 z-50 flex items-center justify-between px-8 py-4'>
-        <Box className='cursor-pointer'>
+        <Box className='cursor-pointer' onClick={() => navigate('/')}>
           <LogoBlack variant='black' />
         </Box>
         <Box>
