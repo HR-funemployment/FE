@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import { Flex, Box, Text } from '@chakra-ui/react';
 import { occupancyOptions as options } from '../constants';
 
 export default function OccupancyForm() {
+  const [selected, setSelected] = useState('');
+
   return (
     <Flex className='flex-grow items-center justify-center'>
       <Box className='max-w-2xl'>
@@ -13,7 +16,10 @@ export default function OccupancyForm() {
           {options.map((option) => (
             <Flex
               key={option.name}
-              className='w-44 cursor-pointer justify-start rounded-xl border border-gray-300 p-4'
+              className={`w-44 cursor-pointer justify-start rounded-xl border p-4 ${
+                option.name === selected ? 'border-black' : 'border-gray-300'
+              }`}
+              onClick={() => setSelected(option.name)}
             >
               <Text className='text-sm font-semibold'>{option.name}</Text>
             </Flex>
