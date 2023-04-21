@@ -1,24 +1,9 @@
+import { useState } from 'react';
 import { Flex, Box, Text } from '@chakra-ui/react';
-import { BsHouseDoor, BsDoorOpen, BsPeople } from 'react-icons/bs';
+import { privacyOptions as options } from '../constants';
 
 export default function PrivacyForm() {
-  const options = [
-    {
-      header: 'An entire place',
-      description: 'Guests have the whole place to themselves.',
-      icon: BsHouseDoor,
-    },
-    {
-      header: 'A private room',
-      description: 'Guests sleep in a private room but some areas may be shared with you or others',
-      icon: BsDoorOpen,
-    },
-    {
-      header: 'An shared room',
-      description: 'Guests sleep in a room or common area that may be shared with you or others',
-      icon: BsPeople,
-    },
-  ];
+  const [type, setType] = useState('');
 
   return (
     <Flex className='flex-grow items-center justify-center'>
@@ -27,7 +12,10 @@ export default function PrivacyForm() {
         {options.map((option) => (
           <Flex
             key={option.header}
-            className='mb-2 cursor-pointer items-center justify-between rounded-xl border border-gray-300 p-4 hover:border-black'
+            className={`mb-2 cursor-pointer items-center justify-between rounded-xl border-2 p-4 hover:border-black ${
+              type === option.header ? 'border-black' : 'border-gray-300'
+            }`}
+            onClick={() => setType(option.header)}
           >
             <Box>
               <Text className='text-lg font-semibold'>{option.header}</Text>

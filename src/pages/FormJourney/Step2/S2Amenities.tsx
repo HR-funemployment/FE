@@ -1,44 +1,19 @@
+import { useState } from 'react';
 import { Flex, Box, Text } from '@chakra-ui/react';
+import { amenityOptions, standoutOptions, safetyOptions } from '../constants';
 
 export default function AmenitiesForm() {
-  const amenityOptions = [
-    { name: 'Wifi', icon: '' },
-    { name: 'TV', icon: '' },
-    { name: 'Kitchen', icon: '' },
-    { name: 'Washer', icon: '' },
-    { name: 'Free parking on premises', icon: '' },
-    { name: 'Paid parking on premises', icon: '' },
-    { name: 'Air conditioning', icon: '' },
-    { name: 'Dedicated workspace', icon: '' },
-  ];
+  const [amenities, setAmenities] = useState<string[]>([]);
 
-  const standoutOptions = [
-    { name: 'Pool', icon: '' },
-    { name: 'Hot tub', icon: '' },
-    { name: 'Patio', icon: '' },
-    { name: 'BBQ grill', icon: '' },
-    { name: 'Outdoor dining area', icon: '' },
-    { name: 'Fire pit', icon: '' },
-    { name: 'Pool table', icon: '' },
-    { name: 'Indoor fireplace', icon: '' },
-    { name: 'Piano', icon: '' },
-    { name: 'Exercise Equipment', icon: '' },
-    { name: 'Lake access', icon: '' },
-    { name: 'Beach access', icon: '' },
-    { name: 'Ski-in/Ski-out', icon: '' },
-    { name: 'Outdoor shower', icon: '' },
-  ];
-
-  const safetyOptions = [
-    { name: 'Smoke alarm', icon: '' },
-    { name: 'First aid kit', icon: '' },
-    { name: 'Fire extinguisher', icon: '' },
-    { name: 'Carbon monoxide alarm', icon: '' },
-  ];
+  const handleInput = (amenity: string) => {
+    if (amenities.includes(amenity)) {
+      setAmenities((prev) => prev.filter((i) => i !== amenity));
+    } else setAmenities((prev) => [...prev, amenity]);
+  };
 
   return (
     <Flex className='justify-center'>
-      <Flex className='flex-col pt-4'>
+      <Flex className='flex-col pl-8 pt-4'>
         <Text className='mb-3 text-2xl font-semibold'>
           Tell guests what your place has to offer
         </Text>
@@ -47,7 +22,10 @@ export default function AmenitiesForm() {
           {amenityOptions.map((option) => (
             <Box
               key={option.name}
-              className='w-44 cursor-pointer rounded-md border border-gray-300 p-2 hover:border-black'
+              className={`w-44 cursor-pointer rounded-md border  p-2 hover:border-black ${
+                amenities.includes(option.name) ? 'border-black' : 'border-gray-300'
+              }`}
+              onClick={() => handleInput(option.name)}
             >
               <Text className='text-sm font-semibold'>{option.name}</Text>
             </Box>
@@ -58,7 +36,10 @@ export default function AmenitiesForm() {
           {standoutOptions.map((option) => (
             <Box
               key={option.name}
-              className='w-44 cursor-pointer rounded-md border border-gray-300 p-2 hover:border-black'
+              className={`w-44 cursor-pointer rounded-md border  p-2 hover:border-black ${
+                amenities.includes(option.name) ? 'border-black' : 'border-gray-300'
+              }`}
+              onClick={() => handleInput(option.name)}
             >
               <Text className='text-sm font-semibold'>{option.name}</Text>
             </Box>
@@ -69,7 +50,10 @@ export default function AmenitiesForm() {
           {safetyOptions.map((option) => (
             <Box
               key={option.name}
-              className='w-44 cursor-pointer rounded-md border border-gray-300 p-2 hover:border-black'
+              className={`w-44 cursor-pointer rounded-md border  p-2 hover:border-black ${
+                amenities.includes(option.name) ? 'border-black' : 'border-gray-300'
+              }`}
+              onClick={() => handleInput(option.name)}
             >
               <Text className='text-sm font-semibold'>{option.name}</Text>
             </Box>

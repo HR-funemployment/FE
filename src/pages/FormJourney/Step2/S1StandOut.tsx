@@ -13,11 +13,7 @@ export default function StandOut() {
           </Text>
         </Flex>
         <Flex className='w-1/2 px-4'>
-          <Image
-            src='https://via.placeholder.com/300'
-            alt='Placeholder image'
-            className='h-auto w-full'
-          />
+          <Image src='/assets/images/step2.jpg' alt='step2 hero' className='h-auto w-full' />
         </Flex>
       </Flex>
     </Flex>

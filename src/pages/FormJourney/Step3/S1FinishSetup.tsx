@@ -13,11 +13,7 @@ export default function FinishSetup() {
           </Text>
         </Flex>
         <Flex className='w-1/2 px-4'>
-          <Image
-            src='https://via.placeholder.com/300'
-            alt='Placeholder image'
-            className='h-auto w-full'
-          />
+          <Image src='/assets/images/step3.jpg' alt='step3 hero' className='h-auto w-full' />
         </Flex>
       </Flex>
     </Flex>

@@ -1,13 +1,7 @@
 import { Flex, Box, Text } from '@chakra-ui/react';
+import { occupancyOptions as options } from '../constants';
 
 export default function OccupancyForm() {
-  const options = [
-    { name: 'Me', icon: 0 },
-    { name: 'My family', icon: 0 },
-    { name: 'Other guests', icon: 0 },
-    { name: 'Roommates', icon: 0 },
-  ];
-
   return (
     <Flex className='flex-grow items-center justify-center'>
       <Box className='max-w-2xl'>
