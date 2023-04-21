@@ -95,11 +95,12 @@ const journeyMachine = createMachine<MachineContext, FormEvent>({
     step1_floorplan: {
       on: {
         PREV: 'step1_location',
-        NEXT: {
-          actions: assign((context: MachineContext) => ({
-            nextStep: context.privacy_type === 'private' ? 'step1_bathrooms' : 'step2_standout',
-          })),
-        },
+        NEXT: 'step1_bathrooms',
+        // NEXT: {
+        //   actions: assign((context: MachineContext) => ({
+        //     nextStep: context.privacy_type === 'private' ? 'step1_bathrooms' : 'step2_standout',
+        //   })),
+        // },
       },
     },
     // only for private rooms
