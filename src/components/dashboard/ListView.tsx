@@ -11,13 +11,15 @@ export default function ListView() {
       <UnorderedList styleType="none">
         <SimpleGrid p="20px" spacing={10} minChildWidth={250}>
             {testArray.map((item) => (
-              <ListItem key={item.id} bg='green.500' border="1px solid" borderRadius={12}>
+              <ListItem key={item.id}>
                 <RentalListItem
                   name={item.name}
                   neighborhood={item.neighborhood}
                   price={item.price}
                   photo={item.picture_url}
                   rating={item.review_scores_rating}
+                  bedrooms={item.bedrooms}
+                  bathrooms={item.bathrooms_text}
                 />
               </ListItem>
             ))}
