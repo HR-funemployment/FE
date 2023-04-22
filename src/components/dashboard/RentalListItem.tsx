@@ -19,7 +19,7 @@ export default function RentalListItem({ name, neighborhood, price, photo, ratin
   return (
     <Box maxW='sm' overflow='hidden'>
       <Flex position='relative' justifyContent={'right'}>
-        <Box position='absolute' mr='3' mt='3'>
+        <Box position='absolute' mr='3' mt='3' cursor='pointer'>
           {liked === true ? <FaHeart onClick={() => setLiked(!liked)}></FaHeart> : <FaRegHeart onClick={() => setLiked(!liked)}></FaRegHeart>}
         </Box>
         <Image
