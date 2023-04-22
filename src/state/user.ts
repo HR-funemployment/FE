@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import auth from '../../firebaseConfig'
+import auth from '../../firebaseConfig';
 
 export const userSlice = createSlice({
   name: 'user',
@@ -12,7 +12,8 @@ export const userSlice = createSlice({
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
-      state.user = action.payload;
+      // I added parse here because it was giving errors in console
+      state.user = JSON.parse(action.payload);
     },
     logout: (state) => {
       auth.signOut();

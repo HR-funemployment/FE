@@ -5,7 +5,9 @@ import { RootState } from '../state/store';
 import DecideLayout from './DecideLayout';
 import formRoutes from './formRoutes';
 import { Login, Forget, SignUp } from '../components/Auth';
+import { HostingAdmin, HostingInbox } from '../pages/Hosting';
 import HomePage from '../pages/HomePage';
+import Message from '../pages/Messaging/Message';
 
 export interface RouteType {
   path: string;
@@ -23,6 +25,12 @@ const routes: RouteType[] = [
     type: 'listing',
     title: 'home',
     component: HomePage,
+  },
+  {
+    path: '/message',
+    type: 'message',
+    title: 'message',
+    component: Message,
   },
 
   // Authentication
@@ -45,12 +53,32 @@ const routes: RouteType[] = [
     component: Login,
   },
 
+  // Hosting
+
+  {
+    path: '/hosting',
+    type: 'hosting',
+    title: 'host_admin',
+    component: HostingAdmin,
+  },
+  {
+    path: '/hosting/inbox/folder/:filter',
+    type: 'hosting',
+    title: 'host_inbox',
+    component: HostingInbox,
+  },
+
   ...formRoutes,
 ];
 
-const getPath = (title: string) => {
+const getPath = (title: string, idType?: string, id?: string) => {
   const route = routes.find((component) => component.title === title);
-  return route ? route.path : '/';
+  if (!route) return '/';
+  const { path } = route;
+  if (idType && id && path.includes(`:${idType}`)) {
+    return path.replace(`:${idType}`, id);
+  }
+  return path;
 };
 
 function AppRouter() {

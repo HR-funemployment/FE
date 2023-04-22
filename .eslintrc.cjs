@@ -13,6 +13,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
+  ignorePatterns: ['tailwind.config.cjs', 'postcss.config.cjs'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -31,5 +32,6 @@ module.exports = {
     'import/extensions': ['error', 'never'],
     'import/no-unresolved': 0,
     'react/jsx-props-no-spreading': 'off',
+    'react/require-default-props': 'off',
   },
 };

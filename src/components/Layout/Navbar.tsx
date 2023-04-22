@@ -7,6 +7,7 @@ import {
   MenuList,
   Avatar,
 } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { logout } from '../../state/user';
@@ -18,8 +19,12 @@ export default function Navbar() {
   return (
     <div style={{ height: '4rem', backgroundColor: 'gray' }}>
       <div>Navbar Placeholder</div>
-      <ChakraLink href={getPath('host_admin')}>Routing Example Button1</ChakraLink>
+      {/* using just 'href' instead of 'as'/'to' = full page refresh */}
+      <ChakraLink as={RouterLink} to={getPath('host_admin')}>
+        Routing Example Button
+      </ChakraLink>
       <br />
+      <ChakraLink href={getPath('message')}>message</ChakraLink>
       <br />
       <div style={{ position: 'relative' }}>
         <Menu>

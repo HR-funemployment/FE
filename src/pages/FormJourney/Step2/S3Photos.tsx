@@ -1,3 +1,3 @@
 export default function PhotosForm() {
-  return <div>Step 3</div>;
+  return <div>This requires cloudinary integration</div>;
 }

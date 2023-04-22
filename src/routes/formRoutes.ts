@@ -1,12 +1,13 @@
 import {
-  HostingInfo,
+  ManageDrafts,
   HostOverview,
-  ManageListings,
   S1BecomeAHost,
   S2Structure,
   S3Privacy,
   S4Location,
   S5FloorPlan,
+  S5Private1,
+  S5Private2,
   S1StandOut,
   S2Amenities,
   S3Photos,
@@ -22,28 +23,20 @@ import {
 import { RouteType } from './AppRouter';
 
 const formRoutes: RouteType[] = [
-  // Admin pages
-  {
-    path: '/hosting',
-    type: 'hosting',
-    title: 'host_admin',
-    component: HostingInfo,
-  },
-
-  // Joruney start
-  // Shows current drafts
+  // Journey start
+  // Shows current drafts and also acts as the state holder
   {
     path: '/become-a-host',
-    type: 'hosting',
+    type: 'create-listing',
     title: 'become_host',
-    component: ManageListings,
+    component: ManageDrafts,
   },
 
   // Intro
   // Creates a new draft upon starting the journey
   {
     path: '/become-a-host/overview',
-    type: 'hosting',
+    type: 'create-listing',
     title: 'host_overview',
     component: HostOverview,
   },
@@ -51,64 +44,77 @@ const formRoutes: RouteType[] = [
   // Step 1
   {
     path: '/become-a-host/:draftId/about-your-place',
-    type: 'hosting',
+    type: 'create-listing',
     title: 'step1_about',
     component: S1BecomeAHost,
   },
   {
     path: '/become-a-host/:draftId/structure',
-    type: 'hosting',
+    type: 'create-listing',
     title: 'step1_structure',
     component: S2Structure,
   },
   {
     path: '/become-a-host/:draftId/privacy-type',
-    type: 'hosting',
+    type: 'create-listing',
     title: 'step1_privacy',
     component: S3Privacy,
   },
   {
     path: '/become-a-host/:draftId/location',
-    type: 'hosting',
+    type: 'create-listing',
     title: 'step1_location',
     component: S4Location,
   },
   {
     path: '/become-a-host/:draftId/floor-plan',
-    type: 'hosting',
+    type: 'create-listing',
     title: 'step1_floorplan',
     component: S5FloorPlan,
+  },
+  // Only for private rooms
+  {
+    path: '/become-a-host/:draftId/bathrooms',
+    type: 'create-listing',
+    title: 'step1_bathrooms',
+    component: S5Private1,
+  },
+  {
+    path: '/become-a-host/:draftId/occupancy',
+    type: 'create-listing',
+    title: 'step1_occupancy',
+    component: S5Private2,
   },
 
   // Step 2
 
   {
     path: '/become-a-host/:draftId/stand-out',
-    type: 'hosting',
+    type: 'create-listing',
     title: 'step2_standout',
     component: S1StandOut,
   },
   {
     path: '/become-a-host/:draftId/amenities',
-    type: 'hosting',
+    type: 'create-listing',
     title: 'step2_amenities',
     component: S2Amenities,
   },
   {
     path: '/become-a-host/:draftId/photos',
-    type: 'hosting',
+    type: 'create-listing',
     title: 'step2_photos',
     component: S3Photos,
   },
   {
     path: '/become-a-host/:draftId/title',
-    type: 'hosting',
+    type: 'create-listing',
     title: 'step2_title',
     component: S4Title,
   },
   {
     path: '/become-a-host/:draftId/description',
-    type: 'hosting',
+    type: 'create-listing',
     title: 'step2_description',
     component: S5Description,
   },
@@ -116,31 +122,31 @@ const formRoutes: RouteType[] = [
 
   {
     path: '/become-a-host/:draftId/finish-setup',
-    type: 'hosting',
+    type: 'create-listing',
     title: 'step3_finish',
     component: S1FinishSetup,
   },
   {
     path: '/become-a-host/:draftId/visibility',
-    type: 'hosting',
+    type: 'create-listing',
     title: 'step3_visibility',
     component: S2Visibility,
   },
   {
     path: '/become-a-host/:draftId/price',
-    type: 'hosting',
+    type: 'create-listing',
     title: 'step3_price',
     component: S3Price,
   },
   {
     path: '/become-a-host/:draftId/legal',
-    type: 'hosting',
+    type: 'create-listing',
     title: 'step3_legal',
     component: S4Legal,
   },
   {
     path: '/become-a-host/:draftId/receipt',
-    type: 'hosting',
+    type: 'create-listing',
     title: 'step3_review',
     component: S5Review,
   },
@@ -148,7 +154,7 @@ const formRoutes: RouteType[] = [
   // Final
   {
     path: '/become-a-host/:draftId/publish-celebration',
-    type: 'hosting',
+    type: 'create-listing',
     title: 'step3_publish',
     component: S6Publish,
   },
