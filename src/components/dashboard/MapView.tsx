@@ -1,5 +1,5 @@
 // import { useState} from 'react';
-import testArray from './testData';
+// import testArray from './testData';
 
 export default function MapView() {
   return (

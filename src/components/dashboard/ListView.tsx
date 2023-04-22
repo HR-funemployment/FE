@@ -20,6 +20,7 @@ export default function ListView() {
                   rating={item.review_scores_rating}
                   bedrooms={item.bedrooms}
                   bathrooms={item.bathrooms_text}
+                  property_type={item.property_type}
                 />
               </ListItem>
             ))}
